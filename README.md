@@ -1,36 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+#  Trawel — Luxury Travel Made Affordable
 
-## Getting Started
+**Trawel** is a premium, cinematic travel website built with modern web technologies.  
+It showcases curated luxury travel experiences, immersive storytelling, and smooth animations — designed to position Trawel as a high-end, experience-first travel brand.
 
-First, run the development server:
+🔗 **Live Website:** https://trawel26.vercel.app/
+
+---
+
+## ✨ Features
+
+- 🎥 Cinematic hero section with background video
+- 🌄 Curated travel themes (Adventure, Luxury, Honeymoon, Family, etc.)
+- 🧭 Scroll-based storytelling with smooth GSAP animations
+- ⭐ Guest reviews section with staggered reveal animations
+- 🖼️ High-quality imagery with graceful fallbacks
+- 💎 Premium UI/UX inspired by luxury global brands
+- 📱 Fully responsive (desktop, tablet, mobile)
+- ⚡ Deployed on Vercel with fast global CDN
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework:** Next.js (App Router)
+- **Styling:** Tailwind CSS
+- **Animations:** GSAP, Framer Motion
+- **Icons:** Lucide Icons
+- **Deployment:** Vercel
+- **Language:** TypeScript / JavaScript
+
+---
+
+## 📁 Project Structure
+
+```text
+├── app/                    # Next.js app router
+├── components/             # Reusable UI components
+│   └── sections/           # Page sections (Hero, Themes, Reviews, etc.)
+├── lib/                    # Configs (brand-config, helpers)
+├── public/
+│   ├── images/             # Static images (logos, theme images)
+│   └── videos/             # Hero & background videos
+├── styles/                 # Global styles
+├── next.config.js
+└── package.json
+````
+
+---
+
+## 🚀 Getting Started (Local Development)
+
+Clone the repository and run:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open your browser at:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🌐 Deployment
 
-To learn more about Next.js, take a look at the following resources:
+The project is deployed using **Vercel**.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Any push to the `main` branch automatically triggers a new deployment.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Live URL:
+👉 [https://trawel26.vercel.app/](https://trawel26.vercel.app/)
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🎯 Vision
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Trawel aims to go beyond generic travel aggregators by offering:
+
+* Expert-curated experiences
+* Human-first travel planning
+* Luxury feel without luxury pricing
+* Strong visual storytelling
+
+---
+
+## 📌 Future Enhancements
+
+* Custom booking flow
+* Dynamic destinations & packages
+* Backend integration (APIs / ML-powered recommendations)
+* Admin dashboard
+* SEO & performance optimization
+
+---
+
+## 📄 License
+
+This project is proprietary and intended for internal and business use by **Trawel / InstaHelp**.
+
+---
+
+### Built with ❤️ to create unforgettable journeys.
+
