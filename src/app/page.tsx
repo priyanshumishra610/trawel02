@@ -3,6 +3,7 @@
 import Navigation from "@/components/sections/navigation";
 import HeroVideoWindow from "@/components/sections/hero-video-window";
 import { CinematicStorytelling } from "@/components/sections/cinematic-storytelling";
+import { GuestReviews } from "@/components/sections/guest-reviews";
 import { DestinationsShowcase } from "@/components/sections/destinations-showcase";
 import WhyChooseUs from "@/components/sections/why-choose-us";
 import About from "@/components/sections/about";
@@ -19,16 +20,17 @@ export default function Home() {
       <MagneticCursor />
       <LuxuryParticles />
       <Navigation />
-      <main>
-        <HeroVideoWindow />
-        <CinematicStorytelling />
-        <DestinationsShowcase />
-        <WhyChooseUs />
-        <About />
-        <InteractiveGallery />
-        <CuratedVoyageSlider />
-        <TestimonialsAndClients />
-      </main>
+        <main>
+          <HeroVideoWindow />
+          <CinematicStorytelling />
+          <GuestReviews />
+          <DestinationsShowcase />
+          <WhyChooseUs />
+          <About />
+          <InteractiveGallery />
+          <CuratedVoyageSlider />
+          <TestimonialsAndClients />
+        </main>
       <Footer />
     </div>
   );

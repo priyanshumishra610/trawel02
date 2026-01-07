@@ -27,16 +27,16 @@ const HeroVideoWindow = () => {
           >
             {/* Dark Overlay Gradient (40-55% for readability) */}
             <div className="absolute inset-0 bg-black/50 z-10" />
-              <video 
-                autoPlay 
-                muted 
-                loop 
-                playsInline
-                preload="auto"
-                className="h-full w-full object-cover"
-              >
-                <source src="https://aabee.in/test1.mp4" type="video/mp4" />
-              </video>
+                <video 
+                  autoPlay 
+                  muted 
+                  loop 
+                  playsInline
+                  preload="auto"
+                  className="h-full w-full object-cover"
+                >
+                  <source src="/videos/travel-hero.mp4" type="video/mp4" />
+                </video>
           </motion.div>
 
       {/* Content */}
