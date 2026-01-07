@@ -72,8 +72,8 @@ const About = () => {
             </h2>
             <div className="space-y-8 text-white/40 text-lg md:text-xl font-light leading-relaxed mb-12">
               <p>
-                {BRAND_CONFIG.name} was born from a simple realization: luxury travel shouldn't be gated behind exorbitant commissions and cookie-cutter itineraries.
-              </p>
+                  {BRAND_CONFIG.name} was born from a simple realization: luxury travel shouldn&apos;t be gated behind exorbitant commissions and cookie-cutter itineraries.
+                </p>
               <p>
                 As a tech-driven curated travel brand managed by <span className="text-white/80 font-medium">{BRAND_CONFIG.owner}</span>, we bridge the gap between high-end hospitality and local expertise. We believe that true luxury is personal, handpicked, and perfectly executed.
               </p>

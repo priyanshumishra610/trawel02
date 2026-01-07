@@ -1,16 +1,36 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { BRAND_CONFIG } from '@/lib/brand-config';
 import { Menu, X, Phone, Mail } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import gsap from 'gsap';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
+  const logoRef = useRef<HTMLAnchorElement>(null);
+  const linksRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const nav = navRef.current;
+    const logo = logoRef.current;
+    const links = linksRef.current;
+    const cta = ctaRef.current;
+    
+    if (nav && logo && links && cta) {
+      const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
+      
+      gsap.set([logo, links.children, cta], { opacity: 0, y: -20 });
+      
+      tl.to(logo, { opacity: 1, y: 0, duration: 1, delay: 0.5 })
+        .to(links.children, { opacity: 1, y: 0, duration: 0.8, stagger: 0.1 }, "-=0.6")
+        .to(cta, { opacity: 1, y: 0, duration: 0.8 }, "-=0.4");
+    }
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
@@ -28,14 +48,15 @@ const Navigation = () => {
 
   return (
     <nav 
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-        isScrolled ? 'bg-background/80 backdrop-blur-lg py-4 border-b' : 'bg-transparent py-6'
+      ref={navRef}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-700 ${
+        isScrolled ? 'bg-background/90 backdrop-blur-xl py-3 border-b border-white/5' : 'bg-transparent py-6'
       }`}
     >
           <div className="container flex items-center justify-between h-full">
             {/* Logo Column */}
             <div className="flex-1 flex items-center justify-start">
-              <Link href="/" className="relative z-50 flex flex-col group">
+              <Link ref={logoRef} href="/" className="relative z-50 flex flex-col group">
                 <span className="font-display text-2xl md:text-3xl font-bold tracking-tight text-white group-hover:text-primary transition-colors duration-300">
                   TRAWEL<span className="text-primary group-hover:text-white">.</span>IN
                 </span>
@@ -46,7 +67,7 @@ const Navigation = () => {
             </div>
 
             {/* Desktop Links Column (Centered) */}
-            <div className="hidden lg:flex items-center justify-center gap-14 xl:gap-20">
+            <div ref={linksRef} className="hidden lg:flex items-center justify-center gap-14 xl:gap-20">
               {navLinks.map((link) => (
                 <Link 
                   key={link.name} 
@@ -59,7 +80,7 @@ const Navigation = () => {
             </div>
 
             {/* CTA Column */}
-            <div className="flex-1 flex items-center justify-end gap-12">
+            <div ref={ctaRef} className="flex-1 flex items-center justify-end gap-12">
               <div className="hidden xl:flex flex-col items-end">
                 <span className="text-[8px] uppercase tracking-[0.5em] text-white/30 mb-0.5">Global Concierge</span>
                 <a href={`tel:${BRAND_CONFIG.contact.phone}`} className="flex items-center gap-2 text-[13px] text-white hover:text-primary transition-colors font-semibold">

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { BRAND_CONFIG } from "@/lib/brand-config";
@@ -100,8 +99,8 @@ const TestimonialsAndClients = () => {
                   <Quote className="absolute top-12 right-12 w-16 h-16 text-primary/10" />
                   
                   <p className="text-xl md:text-2xl text-white/60 leading-relaxed font-light italic mb-12 relative z-10">
-                    "{BRAND_CONFIG.testimonials[activeIndex].quote}"
-                  </p>
+                      &ldquo;{BRAND_CONFIG.testimonials[activeIndex].quote}&rdquo;
+                    </p>
                   
                   <div className="flex items-center gap-6">
                     <div className="h-px w-12 bg-primary/40" />
@@ -125,8 +124,8 @@ const TestimonialsAndClients = () => {
           <p className="text-center text-white/30 uppercase tracking-[0.5em] text-[9px] font-bold mb-16">
             Trusted by Visionaries From
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-16 md:gap-28 opacity-40 grayscale hover:grayscale-0 transition-all duration-1000">
-            <span className="text-2xl md:text-3xl font-bold text-white tracking-tighter hover:text-primary transition-colors cursor-default">BECTOR'S</span>
+            <div className="flex flex-wrap justify-center items-center gap-16 md:gap-28 opacity-40 grayscale hover:grayscale-0 transition-all duration-1000">
+              <span className="text-2xl md:text-3xl font-bold text-white tracking-tighter hover:text-primary transition-colors cursor-default">BECTOR&apos;S</span>
             <span className="text-2xl md:text-3xl font-serif text-white italic hover:text-primary transition-colors cursor-default">Bikaner</span>
             <span className="text-2xl md:text-3xl font-black text-white hover:text-primary transition-colors cursor-default">HALDIRAM</span>
             <span className="text-2xl md:text-3xl font-display text-white hover:text-primary transition-colors cursor-default">JAQUAR</span>

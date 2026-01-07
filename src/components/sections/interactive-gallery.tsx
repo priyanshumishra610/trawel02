@@ -8,11 +8,9 @@ import { ArrowRight } from "lucide-react";
 
 const ThemeCard = ({ 
   title, 
-  image, 
   index 
 }: { 
   title: string; 
-  image: string; 
   index: number 
 }) => {
   return (
@@ -100,13 +98,12 @@ const InteractiveGallery = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {BRAND_CONFIG.travelThemes.map((theme, i) => (
-            <ThemeCard 
-              key={theme.slug} 
-              title={theme.title} 
-              image={theme.image} 
-              index={i} 
-            />
+            {BRAND_CONFIG.travelThemes.map((theme, i) => (
+              <ThemeCard 
+                key={theme.slug} 
+                title={theme.title} 
+                index={i} 
+              />
           ))}
         </div>
         

@@ -54,9 +54,9 @@ const WhyChooseUs = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
             className="text-white/40 text-lg md:text-xl font-light leading-relaxed max-w-2xl"
-          >
-            We don't just book trips; we craft experiences. Discover why thousands of travelers trust Trawel.in over big booking engines.
-          </motion.p>
+            >
+              We don&apos;t just book trips; we craft experiences. Discover why thousands of travelers trust Trawel.in over big booking engines.
+            </motion.p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
@@ -101,9 +101,9 @@ const WhyChooseUs = () => {
                 <h3 className="text-4xl md:text-5xl font-display font-bold text-white mb-8 leading-tight tracking-tight">
                   Better Prices Than OTAs. <br />Guaranteed.
                 </h3>
-                <p className="text-white/50 text-lg mb-10 font-light leading-relaxed">
-                  Through our exclusive direct partnerships with premium hotels and local operators, we're able to offer rates that you won't find on MakeMyTrip, Agoda, or Booking.com.
-                </p>
+              <p className="text-white/50 text-lg mb-10 font-light leading-relaxed">
+                    Through our exclusive direct partnerships with premium hotels and local operators, we&apos;re able to offer rates that you won&apos;t find on MakeMyTrip, Agoda, or Booking.com.
+                  </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
                   {[
                     "No Hidden Booking Fees",
