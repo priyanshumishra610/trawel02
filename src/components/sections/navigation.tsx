@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import NextImage from 'next/image';
 import { BRAND_CONFIG } from '@/lib/brand-config';
 import { Menu, X, Phone, Mail } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -53,18 +54,25 @@ const Navigation = () => {
         isScrolled ? 'bg-background/95 backdrop-blur-2xl py-3 border-b border-white/5' : 'bg-transparent py-7'
       }`}
     >
-      <div className="max-w-[1800px] mx-auto px-6 md:px-12 grid grid-cols-2 lg:grid-cols-3 items-center h-full relative">
-        {/* Logo Column */}
-        <div className="flex items-center justify-start">
-          <Link ref={logoRef} href="/" className="relative z-50 flex flex-col group">
-            <span className="font-display text-2xl md:text-3xl font-bold tracking-tighter text-white group-hover:text-primary transition-colors duration-500">
-              TRAWEL<span className="text-primary group-hover:text-white">.</span>IN
-            </span>
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-full relative">
+        {/* Logo Section */}
+        <div className="flex-shrink-0">
+          <Link ref={logoRef} href="/" className="relative z-50 flex items-center group">
+            <div className="relative h-9 w-auto aspect-[3/1]">
+              <NextImage 
+                src="/images/logo.png"
+                alt={BRAND_CONFIG.name}
+                fill
+                className="object-contain group-hover:opacity-80 transition-opacity duration-300"
+                priority
+              />
+            </div>
+            <span className="sr-only">{BRAND_CONFIG.name}</span>
           </Link>
         </div>
 
-        {/* Desktop Links Column (Centered) */}
-        <div ref={linksRef} className="hidden lg:flex items-center justify-center gap-10 xl:gap-14">
+        {/* Desktop Links (Centered) */}
+        <div ref={linksRef} className="hidden lg:flex items-center gap-8 xl:gap-10">
           {navLinks.map((link) => (
             <Link 
               key={link.name} 
@@ -77,18 +85,18 @@ const Navigation = () => {
           ))}
         </div>
 
-        {/* Right Column: Contact + CTA + Mobile Toggle */}
-        <div ref={ctaRef} className="flex items-center justify-end gap-8 xl:gap-12">
+        {/* Right Section: Contact + CTA + Mobile Toggle */}
+        <div ref={ctaRef} className="flex items-center gap-6 xl:gap-8">
           <div className="hidden xl:flex flex-col items-end">
             <span className="text-[7px] uppercase tracking-[0.6em] text-white/20 mb-1 font-bold">24/7 Elite Concierge</span>
-            <a href={`tel:${BRAND_CONFIG.contact.phone}`} className="flex items-center gap-2.5 text-[11px] text-white/90 hover:text-primary transition-colors font-bold tracking-widest">
+            <a href={`tel:${BRAND_CONFIG.contact.phone}`} className="flex items-center gap-2 text-[11px] text-white/90 hover:text-primary transition-colors font-bold tracking-widest">
               <Phone size={10} className="text-primary/70" />
               <span>{BRAND_CONFIG.contact.phone}</span>
             </a>
           </div>
           
           <div className="hidden lg:flex items-center">
-            <Link href="#contact" className="btn btn-primary text-[9px] uppercase tracking-[0.35em] px-8 py-3 font-bold border border-white/5 hover:border-primary/40 transition-all duration-700 shadow-xl shadow-black/20">
+            <Link href="#contact" className="btn btn-primary text-[9px] uppercase tracking-[0.35em] px-6 py-2.5 font-bold border border-white/5 hover:border-primary/40 transition-all duration-700 shadow-xl shadow-black/20">
               Get Consultation
             </Link>
           </div>

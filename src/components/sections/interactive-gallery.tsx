@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
+import NextImage from "next/image";
 import { motion } from "framer-motion";
 import { BRAND_CONFIG } from "@/lib/brand-config";
 import { ArrowRight } from "lucide-react";
@@ -27,9 +27,7 @@ const ThemeCard = ({
     '1504674900247-0877df9cc836'  // Culture
   ];
 
-  const imageUrl = image && !image.startsWith('/images') 
-    ? image 
-    : `https://images.unsplash.com/photo-${fallbacks[index % fallbacks.length]}?auto=format&fit=crop&q=80&w=800`;
+  const imageUrl = image || `https://images.unsplash.com/photo-${fallbacks[index % fallbacks.length]}?auto=format&fit=crop&q=80&w=800`;
 
   return (
     <motion.div
@@ -37,13 +35,13 @@ const ThemeCard = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, duration: 0.8 }}
-      className="group relative aspect-[3/4] rounded-[2.5rem] overflow-hidden cursor-pointer border border-white/5"
+      className="group relative aspect-[3/4] rounded-[2.5rem] overflow-visible cursor-pointer border border-white/5"
     >
-      <Image
+      <NextImage
         src={imageUrl}
         alt={title}
         fill
-        className="object-cover transition-transform duration-[2000ms] group-hover:scale-110"
+        className="object-cover rounded-[2.5rem] transition-transform duration-[2000ms] group-hover:scale-110"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-700" />
       

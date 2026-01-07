@@ -43,9 +43,9 @@ export const BRAND_CONFIG = {
       description: "We only partner with highly-rated luxury properties that meet our standards.",
     },
   ],
-  travelThemes: [
-    { title: "Adventure", slug: "adventure", image: "/images/themes/adventure.jpg" },
-    { title: "Honeymoon", slug: "honeymoon", image: "/images/themes/honeymoon.jpg" },
+    travelThemes: [
+      { title: "Adventure", slug: "adventure", image: "https://images.unsplash.com/photo-1506905593325-02485999c1f2?auto=format&fit=crop&q=80&w=800" },
+      { title: "Honeymoon", slug: "honeymoon", image: "/images/themes/honeymoon.jpg" },
     { title: "Family", slug: "family", image: "/images/themes/family.jpg" },
     { title: "Luxury Escapes", slug: "luxury", image: "/images/themes/luxury.jpg" },
     { title: "Budget Travel", slug: "budget", image: "/images/themes/budget.jpg" },
