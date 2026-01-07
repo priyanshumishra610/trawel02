@@ -9,12 +9,12 @@ const icons = [Globe, Clock, BadgePercent, ShieldCheck];
 
 const WhyChooseUs = () => {
   return (
-    <section id="why-us" className="section-padding bg-background relative overflow-hidden">
+    <section id="why-us" className="pb-24 md:pb-32 bg-background relative overflow-hidden pt-16 md:pt-24">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       
       <div className="container">
-        <div className="max-w-3xl mb-16">
+        <div className="max-w-3xl mb-16 pt-10">
           <motion.span 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}

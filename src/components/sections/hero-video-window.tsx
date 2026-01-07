@@ -22,24 +22,23 @@ const HeroVideoWindow = () => {
       className="relative h-screen w-full overflow-hidden bg-background"
     >
         {/* Background Video/Image */}
-        <motion.div 
-          style={{ scale, y }}
-          className="absolute inset-0 z-0"
-        >
-          {/* Dark Overlay Gradient (40-55% for readability) */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-background z-10" />
-          <div className="absolute inset-0 bg-black/20 z-10" />
-            <video 
-              autoPlay 
-              muted 
-              loop 
-              playsInline
-              preload="auto"
-              className="h-full w-full object-cover"
-            >
-              <source src="/videos/hero.mp4" type="video/mp4" />
-            </video>
-        </motion.div>
+          <motion.div 
+            style={{ scale, y }}
+            className="absolute inset-0 z-0"
+          >
+            {/* Dark Overlay Gradient (40-55% for readability) */}
+            <div className="absolute inset-0 bg-black/50 z-10" />
+              <video 
+                autoPlay 
+                muted 
+                loop 
+                playsInline
+                preload="auto"
+                className="h-full w-full object-cover"
+              >
+                <source src="https://aabee.in/test1.mp4" type="video/mp4" />
+              </video>
+          </motion.div>
 
       {/* Content */}
       <div className="container relative z-20 h-full flex flex-col justify-center pt-20">
@@ -73,11 +72,11 @@ const HeroVideoWindow = () => {
             </p>
 
           <div className="flex flex-col sm:flex-row gap-5">
-            <button className="btn btn-primary group">
+            <button className="btn btn-primary group tracking-[0.25em] text-[10px] py-4 px-10">
               <span>Get Free Travel Consultation</span>
               <ArrowRight className="inline-block ml-2 group-hover:translate-x-1 transition-transform" size={18} />
             </button>
-            <button className="btn btn-secondary flex items-center justify-center gap-3 group">
+            <button className="btn btn-secondary flex items-center justify-center gap-3 group tracking-[0.25em] text-[10px] py-4 px-10">
               <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-all">
                 <Play size={14} fill="currentColor" />
               </div>
@@ -95,13 +94,13 @@ const HeroVideoWindow = () => {
           className="absolute bottom-0 left-0 w-full z-30"
         >
           <div className="container">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-10 border-t border-white/10 backdrop-blur-md bg-black/30 rounded-t-[2.5rem] px-10 shadow-2xl">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-10 border-t border-white/10 backdrop-blur-md bg-black/30 rounded-t-[3rem] px-10 shadow-2xl">
             {BRAND_CONFIG.stats.map((stat, i) => (
               <div key={i} className="flex flex-col">
-                <span className="text-2xl md:text-3xl font-display font-bold text-primary">
+                <span className="text-2xl md:text-3xl font-display font-bold text-primary tracking-tight">
                   {stat.value}
                 </span>
-                <span className="text-[10px] uppercase tracking-widest text-white/40">
+                <span className="text-[10px] uppercase tracking-[0.3em] text-white/40 font-semibold">
                   {stat.label}
                 </span>
               </div>
