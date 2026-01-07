@@ -63,31 +63,40 @@ export function GuestReviews() {
         ease: "expo.out",
       });
 
-      // Card animations (PER CARD — FIXED)
-      gsap.utils.toArray(".review-card").forEach((card: any, i) => {
-        gsap.fromTo(
-          card,
-          {
-            opacity: 0,
-            y: 40,
-            scale: 0.98,
-          },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 1.2,
-            delay: i * 0.1,
-            ease: "expo.out",
-            clearProps: "all",
-            scrollTrigger: {
-              trigger: card,
-              start: "top 85%",
-              toggleActions: "play none none none",
+        // Card animations (PER CARD — FIXED)
+        gsap.utils.toArray(".review-card").forEach((card: any, i) => {
+          gsap.fromTo(
+            card,
+            {
+              opacity: 0,
+              y: 40,
+              scale: 0.98,
+              visibility: "hidden",
             },
-          }
-        );
-      });
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              visibility: "visible",
+              duration: 1.2,
+              delay: i * 0.1,
+              ease: "expo.out",
+              onComplete: () => {
+                gsap.set(card, {
+                  clearProps: "all",
+                  opacity: 1,
+                  visibility: "visible",
+                  transform: "none",
+                });
+              },
+              scrollTrigger: {
+                trigger: card,
+                start: "top 85%",
+                toggleActions: "play none none none",
+              },
+            }
+          );
+        });
     }, sectionRef);
 
     return () => ctx.revert();
