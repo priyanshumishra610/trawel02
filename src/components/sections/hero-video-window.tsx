@@ -28,15 +28,15 @@ const HeroVideoWindow = () => {
       >
         <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background z-10" />
         <div className="absolute inset-0 bg-black/20 z-10" />
-        <video 
-          autoPlay 
-          muted 
-          loop 
-          playsInline
-          className="h-full w-full object-cover"
-        >
-          <source src="https://aabee.in/test1.mp4" type="video/mp4" />
-        </video>
+          <video 
+            autoPlay 
+            muted 
+            loop 
+            playsInline
+            className="h-full w-full object-cover"
+          >
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-top-view-of-a-luxury-resort-in-the-maldives-40018-large.mp4" type="video/mp4" />
+          </video>
       </motion.div>
 
       {/* Content */}
