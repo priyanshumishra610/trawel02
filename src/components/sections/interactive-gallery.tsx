@@ -2,191 +2,117 @@
 
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { BRAND_CONFIG } from "@/lib/brand-config";
+import { ArrowRight } from "lucide-react";
 
-const GalleryItem = ({
-  className,
-  imageSrc,
-  children,
-  speed = "0.8",
-}: {
-  className?: string;
-  imageSrc?: string;
-  children: React.ReactNode;
-  speed?: string;
+const ThemeCard = ({ 
+  title, 
+  image, 
+  index 
+}: { 
+  title: string; 
+  image: string; 
+  index: number 
 }) => {
   return (
-    <div className={`group relative overflow-hidden h-full w-full ${className}`}>
-      {imageSrc && (
-        <div className="absolute inset-0 z-10 overflow-hidden">
-          <Image
-            src={imageSrc}
-            alt=""
-            fill
-            className="object-cover transition-opacity duration-500 group-hover:opacity-0"
-            style={{
-              transform: `translateY(0%) scale(1.15)`,
-            }}
-            priority
-          />
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1 }}
+      className="group relative aspect-[4/5] rounded-[2rem] overflow-hidden cursor-pointer"
+    >
+      <Image
+        src={`https://images.unsplash.com/photo-${index === 0 ? '1533719071182-182ed503083d' : 
+               index === 1 ? '1583939003579-730e3918a45a' : 
+               index === 2 ? '1511895426328-dc8714191300' : 
+               index === 3 ? '1540541338287-41700207dee6' : 
+               index === 4 ? '1469854523086-cc02fe5d8800' : 
+               index === 5 ? '1544005313-94ddf0286df2' : 
+               index === 6 ? '1544005313-94ddf0286df2' : '1504674900247-0877df9cc836'}?auto=format&fit=crop&q=80&w=800`}
+        alt={title}
+        fill
+        className="object-cover transition-transform duration-700 group-hover:scale-110"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+      
+      <div className="absolute inset-0 p-8 flex flex-col justify-end">
+        <span className="text-primary text-[10px] uppercase tracking-[0.3em] font-bold mb-2 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+          Discover
+        </span>
+        <h3 className="text-white text-2xl font-display font-bold group-hover:text-primary transition-colors duration-500">
+          {title}
+        </h3>
+        <div className="mt-4 flex items-center gap-2 text-white/60 text-sm opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+          <span>Explore Theme</span>
+          <ArrowRight size={14} />
         </div>
-      )}
-      <div className="absolute inset-0 z-0 flex flex-col items-center justify-center bg-black transition-all duration-500 ease-in-out">
-        {children}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
 const InteractiveGallery = () => {
   return (
-    <section className="bg-background">
-      <div
-        id="gallery"
-        className="grid min-h-[150vh] w-full grid-cols-10 grid-rows-10 gap-4 bg-[#0a0a0a] p-4 text-white"
-      >
-        {/* Item 1: Trees/Empty reveal */}
-        <GalleryItem
-          className="col-span-3 col-start-4 row-span-3"
-          imageSrc="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/38c0d017-927e-4708-b2cd-7242a68a2c28-aabee-in/assets/images/images_8.png"
-        >
-          <div className="text-xl">..</div>
-        </GalleryItem>
-
-        {/* Item 2: Gates / About Us */}
-        <GalleryItem
-          className="col-span-3 col-start-1 row-span-4 row-start-3"
-          imageSrc="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/38c0d017-927e-4708-b2cd-7242a68a2c28-aabee-in/assets/images/images_9.png"
-        >
-          <div className="flex flex-col items-center justify-center gap-5 px-8 text-center text-xl font-body font-light leading-relaxed">
-            <p>
-              We redefine travel as an art form. With a legacy of crafting
-              unforgettable experiences, we invite you to learn more about our
-              story and commitment on our About page.
-            </p>
-            <a href="/about" className="no-underline">
-              <button className="btn rounded-sm border px-4 py-2 hover:bg-white hover:text-black">
-                About Us
-              </button>
-            </a>
-          </div>
-        </GalleryItem>
-
-        {/* Item 3: Mountain / Craft Journey (Main Bento Piece) */}
-        <GalleryItem
-          className="col-span-5 col-start-4 row-span-3 row-start-4"
-          imageSrc="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/38c0d017-927e-4708-b2cd-7242a68a2c28-aabee-in/assets/images/images_10.png"
-        >
-          <div className="flex flex-col items-center justify-center gap-5 px-10 text-center text-xl">
-            <div className="flex items-start">
-              <span className="ampersand text-8xl leading-none">&amp;</span>
-              <span className="text-left font-body ml-2">
-                Escape the Ordinary, Elevate Your Travel <br />
-                Craft Your Unforgettable Experience with <br />
-                AABEE
-              </span>
-            </div>
-            <a href="/journeys">
-              <button className="btn rounded-sm border px-6 py-2 hover:bg-white hover:text-black">
-                Start Crafting Your Journey
-              </button>
-            </a>
-          </div>
-        </GalleryItem>
-
-        {/* Item 4: City / Dolortur */}
-        <GalleryItem
-          className="col-span-3 col-start-7 row-span-3 row-start-1"
-          imageSrc="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/38c0d017-927e-4708-b2cd-7242a68a2c28-aabee-in/assets/images/images_11.png"
-        >
-          <div className="text-xl font-display italic">Dolortur</div>
-        </GalleryItem>
-
-        {/* Item 5: CliffCity / Newsletter Signup */}
-        <GalleryItem
-          className="col-span-3 col-start-3 row-span-3 row-start-7"
-          imageSrc="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/38c0d017-927e-4708-b2cd-7242a68a2c28-aabee-in/assets/images/images_12.png"
-        >
-          <div className="flex flex-col items-center justify-center">
-            <span className="mb-4 text-lg font-body">Sign Up to Our Newsletter</span>
-            <form
-              className="flex flex-wrap justify-center gap-2"
-              onSubmit={(e) => e.preventDefault()}
+    <section id="themes" className="section-padding bg-background relative">
+      <div className="container">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+          <div className="max-w-2xl">
+            <motion.span 
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-primary text-xs uppercase tracking-[0.3em] font-bold mb-4 block"
             >
-              <input
-                className="rounded-sm border border-foreground bg-transparent p-2 text-foreground font-body focus:outline-none focus:ring-1 focus:ring-white"
-                placeholder="Email"
-              />
-              <button
-                type="submit"
-                className="btn rounded-sm border border-foreground bg-transparent p-2 hover:bg-white hover:text-black"
-              >
-                Submit
-              </button>
-            </form>
+              Curated Experiences
+            </motion.span>
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-white"
+            >
+              Travel Themes Tailored to Your Soul.
+            </motion.h2>
           </div>
-        </GalleryItem>
-
-        {/* Item 6: Boats / 30 Years */}
-        <GalleryItem
-          className="col-span-2 col-start-9 row-span-4 row-start-5"
-          imageSrc="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/38c0d017-927e-4708-b2cd-7242a68a2c28-aabee-in/assets/images/images_13.png"
-        >
-          <div className="flex flex-col items-center justify-center gap-4 text-center">
-            <span className="font-body text-xl">
-              Celebrating <span className="text-3xl font-display">30 Years</span>{" "}
-              <br /> of Excellence
-            </span>
-            <a href="/about">
-              <button className="btn rounded-sm border px-4 py-2 hover:bg-white hover:text-black">
-                Explore Our Story
-              </button>
-            </a>
-          </div>
-        </GalleryItem>
-
-        {/* Item 7: LakeCity / Get In Touch */}
-        <GalleryItem
-          className="col-span-3 col-start-6 row-span-4 row-start-7"
-          imageSrc="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/38c0d017-927e-4708-b2cd-7242a68a2c28-aabee-in/assets/images/images_14.png"
-        >
-          <div className="flex flex-col items-center justify-center gap-4 text-center">
-            <a href="/contact">
-              <button className="btn rounded-sm border px-6 py-2 hover:bg-white hover:text-black">
-                Get In Touch
-              </button>
-            </a>
-            <p className="font-body text-xl">
-              Let&apos;s Plan Your Next Adventure <br />
-              Together
-            </p>
-          </div>
-        </GalleryItem>
-
-        {/* Item 8: House / Testimonials */}
-        <GalleryItem
-          className="col-span-2 row-span-3 row-start-7"
-          imageSrc="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/38c0d017-927e-4708-b2cd-7242a68a2c28-aabee-in/assets/images/images_15.png"
-        >
-          <div className="flex flex-col items-center justify-center gap-2 p-2 text-center text-xl font-body">
-            <p>
-              See us through <br /> Our Client&apos;s Eyes
-            </p>
-            <button className="btn rounded-sm border px-4 py-2 hover:bg-white hover:text-black">
-              See Testimonials
-            </button>
-          </div>
-        </GalleryItem>
-
-        {/* Empty / Decorative Grid Cells */}
-        <div className="row-start-9 col-span-2 col-start-9 row-span-2 flex items-center justify-center font-display text-4xl tracking-widest"></div>
-        <div className="row-start-10 col-span-5 col-start-1 flex items-center justify-center text-center font-display text-5xl tracking-[0.2em] uppercase">
-          Elevate Your Expectations
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-white/50 max-w-sm mb-2"
+          >
+            Whether you seek high-octane adventure or a quiet spiritual retreat, we have the perfect itinerary waiting for you.
+          </motion.p>
         </div>
-        <div className="col-start-10 row-span-3 row-start-1 whitespace-nowrap text-center font-display text-6xl"></div>
-        <div className="col-span-3 col-start-1 row-span-2 row-start-1 flex items-center justify-center font-display text-5xl tracking-[1rem] uppercase">
-          Experience
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {BRAND_CONFIG.travelThemes.map((theme, i) => (
+            <ThemeCard 
+              key={theme.slug} 
+              title={theme.title} 
+              image={theme.image} 
+              index={i} 
+            />
+          ))}
         </div>
-        <div className="col-span-1 col-start-9 row-start-4 flex items-center justify-center font-display text-8xl tracking-widest"></div>
+        
+        {/* Bottom CTA */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-20 flex flex-col items-center text-center"
+        >
+          <p className="text-white/60 text-lg mb-8 max-w-xl">
+            Can't find what you're looking for? Our experts can design a completely custom theme just for you.
+          </p>
+          <button className="btn btn-secondary px-10 py-4">
+            Request Custom Theme
+          </button>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,118 +1,119 @@
+"use client";
+
 import React from 'react';
-import Image from 'next/image';
+import Link from 'next/link';
+import { BRAND_CONFIG } from '@/lib/brand-config';
+import { Phone, Mail, MapPin, Instagram, Facebook, Linkedin, ArrowUpRight } from 'lucide-react';
 
 const Footer = () => {
-  const footerBg = "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/38c0d017-927e-4708-b2cd-7242a68a2c28-aabee-in/assets/images/images_20.png";
-  const facebookIcon = "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/38c0d017-927e-4708-b2cd-7242a68a2c28-aabee-in/assets/svgs/facebook-dark-7.svg";
-  const twitterIcon = "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/38c0d017-927e-4708-b2cd-7242a68a2c28-aabee-in/assets/svgs/twit-8.svg";
-  const youtubeIcon = "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/38c0d017-927e-4708-b2cd-7242a68a2c28-aabee-in/assets/svgs/youtube-dark-9.svg";
-  const instagramIcon = "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/38c0d017-927e-4708-b2cd-7242a68a2c28-aabee-in/assets/svgs/instagram-dark-10.svg";
-
   return (
-    <footer className="relative w-full bg-black text-white font-body selection:bg-white selection:text-black">
-      {/* Background with Gradient Overlay */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <Image 
-          src={footerBg} 
-          alt="Footer Background" 
-          fill 
-          className="object-cover opacity-30 grayscale"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
-      </div>
-
-      <div className="relative z-10 container mx-auto px-6 pt-32 pb-12">
-        <div className="flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-24 mb-24">
-          
-          {/* Brand Logo Section */}
-          <div className="flex flex-col items-start max-w-md">
-            <div className="mb-6">
-              <div className="flex items-center gap-4">
-                <div className="flex gap-1.5">
-                  <div className="w-8 h-8 rounded-full bg-white"></div>
-                  <div className="w-8 h-8 rounded-full bg-white"></div>
-                </div>
-                <h2 className="text-6xl md:text-7xl font-light tracking-tighter font-display leading-none">
-                  AABEE
-                </h2>
-              </div>
-              <p className="mt-2 text-sm uppercase tracking-[0.3em] font-light text-white/70 italic">
-                Where Luxury meets opulence
-              </p>
-            </div>
-            
-            {/* Social Icons */}
-            <div className="flex gap-6 mt-8">
-              <a href="#" className="hover:opacity-70 transition-opacity">
-                <Image src={facebookIcon} alt="Facebook" width={20} height={20} />
+    <footer className="relative w-full bg-background pt-24 pb-12 overflow-hidden border-t">
+      {/* Decorative background element */}
+      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-primary/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
+      
+      <div className="container relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          {/* Brand Column */}
+          <div className="lg:col-span-1">
+            <Link href="/" className="flex flex-col mb-6">
+              <span className="font-display text-3xl font-bold tracking-tight text-white">
+                TRAWEL<span className="text-primary">.</span>IN
+              </span>
+              <span className="text-[10px] uppercase tracking-[0.2em] text-white/60 -mt-1">
+                by InstaHelp
+              </span>
+            </Link>
+            <p className="text-white/60 text-sm mb-8 leading-relaxed">
+              {BRAND_CONFIG.description}
+            </p>
+            <div className="flex gap-4">
+              <a href={BRAND_CONFIG.socials.instagram} className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/60 hover:text-primary hover:border-primary transition-all">
+                <Instagram size={18} />
               </a>
-              <a href="#" className="hover:opacity-70 transition-opacity">
-                <Image src={twitterIcon} alt="Twitter" width={20} height={20} />
+              <a href={BRAND_CONFIG.socials.facebook} className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/60 hover:text-primary hover:border-primary transition-all">
+                <Facebook size={18} />
               </a>
-              <a href="#" className="hover:opacity-70 transition-opacity">
-                <Image src={youtubeIcon} alt="YouTube" width={20} height={20} />
-              </a>
-              <a href="#" className="hover:opacity-70 transition-opacity">
-                <Image src={instagramIcon} alt="Instagram" width={20} height={20} />
+              <a href={BRAND_CONFIG.socials.linkedin} className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/60 hover:text-primary hover:border-primary transition-all">
+                <Linkedin size={18} />
               </a>
             </div>
           </div>
 
-          {/* Contact and Newsletter Section */}
-          <div className="flex flex-col md:flex-row gap-16 lg:gap-24 w-full lg:w-auto">
-            
-            {/* Newsletter */}
-            <div className="flex flex-col max-w-sm">
-              <h4 className="text-sm uppercase tracking-[0.2em] mb-6 font-medium">Subscribe to our Newsletter</h4>
-              <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
-                <input 
-                  type="email" 
-                  placeholder="Email" 
-                  className="bg-transparent border border-white/30 px-4 py-2 text-sm focus:outline-none focus:border-white transition-colors w-full md:w-64"
-                />
-                <button 
-                  type="submit" 
-                  className="border border-white/30 px-6 py-2 text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-all"
-                >
-                  Submit
-                </button>
-              </form>
-            </div>
+          {/* Quick Links */}
+          <div>
+            <h4 className="font-display text-lg font-semibold mb-6 text-white">Explore</h4>
+            <ul className="space-y-4">
+              {["Destinations", "Travel Themes", "Luxury Escapes", "Honeymoon Specials", "Family Packages"].map((item) => (
+                <li key={item}>
+                  <Link href="#" className="text-white/60 hover:text-primary text-sm transition-colors flex items-center group">
+                    <span>{item}</span>
+                    <ArrowUpRight size={14} className="opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all ml-1" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            {/* Offices & Contacts */}
-            <div className="flex flex-col space-y-8">
-              <div>
-                <h4 className="text-sm uppercase tracking-[0.2em] mb-4 font-medium">Contact Us</h4>
-                <div className="text-sm space-y-2 font-light text-white/80">
-                  <p className="hover:text-white transition-colors">
-                    <a href="mailto:info@aabee.in">info@aabee.in</a>
-                  </p>
-                  <p className="hover:text-white transition-colors">
-                    011 4745 4545
-                  </p>
-                  <p>Pitampura, Delhi | Gurgaon, Haryana</p>
-                </div>
-              </div>
+          {/* Support */}
+          <div>
+            <h4 className="font-display text-lg font-semibold mb-6 text-white">Support</h4>
+            <ul className="space-y-4">
+              {["Contact Us", "Why Choose Us", "About Trawel", "Terms & Conditions", "Privacy Policy"].map((item) => (
+                <li key={item}>
+                  <Link href="#" className="text-white/60 hover:text-primary text-sm transition-colors flex items-center group">
+                    <span>{item}</span>
+                    <ArrowUpRight size={14} className="opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all ml-1" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h4 className="font-display text-lg font-semibold mb-6 text-white">Office</h4>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3 text-white/60 text-sm">
+                <MapPin size={18} className="text-primary shrink-0" />
+                <span>{BRAND_CONFIG.contact.address}</span>
+              </li>
+              <li className="flex items-center gap-3 text-white/60 text-sm">
+                <Phone size={18} className="text-primary shrink-0" />
+                <a href={`tel:${BRAND_CONFIG.contact.phone}`} className="hover:text-primary transition-colors">
+                  {BRAND_CONFIG.contact.phone}
+                </a>
+              </li>
+              <li className="flex items-center gap-3 text-white/60 text-sm">
+                <Mail size={18} className="text-primary shrink-0" />
+                <a href={`mailto:${BRAND_CONFIG.contact.email}`} className="hover:text-primary transition-colors">
+                  {BRAND_CONFIG.contact.email}
+                </a>
+              </li>
+            </ul>
+            <div className="mt-8 pt-8 border-t border-white/5">
+              <p className="text-xs text-white/40 leading-relaxed">
+                Experience luxury like never before. Handpicked destinations at prices that defy the industry standards.
+              </p>
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar: Copyright and Policy Links */}
-        <div className="pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="text-[10px] md:text-xs uppercase tracking-widest text-white/50">
-            © All rights reserved Aabee, 2023
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-xs text-white/40">
+            © {new Date().getFullYear()} {BRAND_CONFIG.name}. All rights reserved. Managed by {BRAND_CONFIG.owner}.
+          </p>
+          <div className="flex gap-8">
+            <Link href="#" className="text-[10px] uppercase tracking-widest text-white/40 hover:text-white transition-colors">
+              Terms
+            </Link>
+            <Link href="#" className="text-[10px] uppercase tracking-widest text-white/40 hover:text-white transition-colors">
+              Privacy
+            </Link>
+            <Link href="#" className="text-[10px] uppercase tracking-widest text-white/40 hover:text-white transition-colors">
+              Cookies
+            </Link>
           </div>
-          
-          <nav className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-[10px] md:text-xs uppercase tracking-widest text-white/70">
-            <a href="/" className="hover:text-white transition-colors">Home</a>
-            <a href="/about" className="hover:text-white transition-colors">About</a>
-            <a href="/journeys" className="hover:text-white transition-colors">Journeys</a>
-            <a href="/destinations" className="hover:text-white transition-colors">Destinations</a>
-            <a href="/contact" className="hover:text-white transition-colors">Contact</a>
-            <a href="/terms" className="hover:text-white transition-colors">Terms</a>
-            <a href="/privacy" className="hover:text-white transition-colors">Privacy</a>
-          </nav>
         </div>
       </div>
     </footer>

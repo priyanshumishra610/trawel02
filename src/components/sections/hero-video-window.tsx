@@ -1,116 +1,112 @@
-import React, { useEffect, useRef } from 'react';
-import Image from 'next/image';
+"use client";
+
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { BRAND_CONFIG } from '@/lib/brand-config';
+import { ArrowRight, Play, Star } from 'lucide-react';
 
 const HeroVideoWindow = () => {
-  const leftShuttersRef = useRef<HTMLDivElement>(null);
-  const rightShuttersRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  });
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!containerRef.current || !leftShuttersRef.current || !rightShuttersRef.current) return;
-
-      const rect = containerRef.current.getBoundingClientRect();
-      const scrollProgress = Math.min(Math.max(-rect.top / rect.height, 0), 1);
-
-      // Parallax and sliding effect for shutters
-      const translateX = scrollProgress * 100; // Shift outwards
-      const opacity = Math.max(1 - scrollProgress * 1.5, 0);
-
-      leftShuttersRef.current.style.transform = `translateX(-${translateX}%)`;
-      leftShuttersRef.current.style.opacity = `${opacity}`;
-
-      rightShuttersRef.current.style.transform = `translateX(${translateX}%)`;
-      rightShuttersRef.current.style.opacity = `${opacity}`;
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const leftImages = [
-    { src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/38c0d017-927e-4708-b2cd-7242a68a2c28-aabee-in/assets/images/images_1.png", col: "col-span-3 col-start-4", row: "row-span-5" },
-    { src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/38c0d017-927e-4708-b2cd-7242a68a2c28-aabee-in/assets/images/images_2.png", col: "col-span-3", row: "row-span-5 row-start-3" },
-    { src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/38c0d017-927e-4708-b2cd-7242a68a2c28-aabee-in/assets/images/images_3.png", col: "col-span-3 col-start-4", row: "row-span-3 row-start-6" },
-  ];
-
-  const rightImages = [
-    { src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/38c0d017-927e-4708-b2cd-7242a68a2c28-aabee-in/assets/images/images_4.png", col: "col-span-2", row: "row-span-3" },
-    { src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/38c0d017-927e-4708-b2cd-7242a68a2c28-aabee-in/assets/images/images_5.png", col: "col-span-3 col-start-1", row: "row-span-3 row-start-4" },
-    { src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/38c0d017-927e-4708-b2cd-7242a68a2c28-aabee-in/assets/images/images_6.png", col: "col-span-2 col-start-3", row: "row-span-2 row-start-2" },
-    { src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/38c0d017-927e-4708-b2cd-7242a68a2c28-aabee-in/assets/images/images_7.png", col: "col-span-2 col-start-4", row: "row-span-3 row-start-4" },
-  ];
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
   return (
     <section 
       ref={containerRef}
-      className="max-[950px]:hidden relative h-[200vh] w-full bg-black overflow-hidden" 
-      id="window"
+      className="relative h-screen w-full overflow-hidden bg-background"
     >
-      <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
-        {/* Background Video Window */}
-        <div className="absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
-          <video 
-            ref={videoRef}
-            autoPlay 
-            muted 
-            loop 
-            className="h-full w-full object-cover"
-            playsInline
-          >
-            <source src="https://aabee.in/test1.mp4" type="video/mp4" />
-          </video>
-        </div>
-
-        {/* Left Shutters */}
-        <div 
-          ref={leftShuttersRef}
-          className="absolute left-0 top-0 z-10 grid h-screen w-[45%] grid-cols-6 grid-rows-8 gap-4 p-4 transition-transform duration-100 ease-out will-change-transform"
+      {/* Background Video/Image */}
+      <motion.div 
+        style={{ scale, y }}
+        className="absolute inset-0 z-0"
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background z-10" />
+        <div className="absolute inset-0 bg-black/20 z-10" />
+        <video 
+          autoPlay 
+          muted 
+          loop 
+          playsInline
+          className="h-full w-full object-cover"
         >
-          {leftImages.map((img, i) => (
-            <div key={i} className={`relative overflow-hidden ${img.col} ${img.row}`}>
-              <Image 
-                src={img.src} 
-                alt="Luxury Travel Scene" 
-                fill 
-                className="object-cover"
-                sizes="33vw"
-                priority
-              />
-            </div>
-          ))}
-        </div>
+          <source src="https://aabee.in/test1.mp4" type="video/mp4" />
+        </video>
+      </motion.div>
 
-        {/* Right Shutters */}
-        <div 
-          ref={rightShuttersRef}
-          className="absolute right-0 top-0 z-10 grid h-screen w-[45%] grid-cols-5 grid-rows-6 gap-4 p-4 transition-transform duration-100 ease-out will-change-transform"
+      {/* Content */}
+      <div className="container relative z-20 h-full flex flex-col justify-center pt-20">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="max-w-4xl"
         >
-          {rightImages.map((img, i) => (
-            <div key={i} className={`relative overflow-hidden ${img.col} ${img.row}`}>
-              <Image 
-                src={img.src} 
-                alt="Luxury Travel Scene" 
-                fill 
-                className="object-cover"
-                sizes="33vw"
-                priority
-              />
+          <div className="flex items-center gap-2 mb-6">
+            <div className="flex text-secondary">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} size={14} fill="currentColor" />
+              ))}
             </div>
-          ))}
-        </div>
+            <span className="text-white/80 text-xs uppercase tracking-[0.2em] font-medium">
+              Trusted by {BRAND_CONFIG.stats[2].value} Travelers
+            </span>
+          </div>
 
-        {/* Overlay Fade to Black */}
-        <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-black/20 via-transparent to-black" />
+          <h1 className="text-white mb-8">
+            {BRAND_CONFIG.tagline.split(' ').map((word, i) => (
+              <span key={i} className={i === 1 ? "text-primary italic" : ""}>
+                {word}{" "}
+              </span>
+            ))}
+          </h1>
+
+          <p className="text-lg md:text-xl text-white/80 mb-12 max-w-2xl leading-relaxed">
+            {BRAND_CONFIG.description}
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-5">
+            <button className="btn btn-primary group">
+              <span>Get Free Travel Consultation</span>
+              <ArrowRight className="inline-block ml-2 group-hover:translate-x-1 transition-transform" size={18} />
+            </button>
+            <button className="btn btn-secondary flex items-center justify-center gap-3 group">
+              <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-all">
+                <Play size={14} fill="currentColor" />
+              </div>
+              <span>Explore Luxury Escapes</span>
+            </button>
+          </div>
+        </motion.div>
       </div>
 
-      {/* Decorative Text that appears during scroll */}
-      <div className="absolute bottom-0 left-0 w-full z-20 flex flex-col items-center justify-center pointer-events-none pb-20">
-        <div className="flex items-center gap-12 font-display text-5xl tracking-[1rem] uppercase text-white opacity-40">
-          Experience
+      {/* Trust Bar / Stats */}
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.6 }}
+        className="absolute bottom-0 left-0 w-full z-30"
+      >
+        <div className="container pb-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-8 border-t border-white/10 backdrop-blur-sm bg-black/20 rounded-t-3xl px-8">
+            {BRAND_CONFIG.stats.map((stat, i) => (
+              <div key={i} className="flex flex-col">
+                <span className="text-2xl md:text-3xl font-display font-bold text-primary">
+                  {stat.value}
+                </span>
+                <span className="text-[10px] uppercase tracking-widest text-white/40">
+                  {stat.label}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
