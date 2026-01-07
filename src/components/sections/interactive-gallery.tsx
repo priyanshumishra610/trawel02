@@ -32,20 +32,25 @@ const UNSPLASH_FALLBACKS = [
   "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=1600",
 ];
 
-const ThemeCard = ({ title, image, index }: ThemeCardProps) => {
-  const imageUrl =
-    image && image.trim().length > 0
-      ? image
-      : UNSPLASH_FALLBACKS[index % UNSPLASH_FALLBACKS.length];
+  const ThemeCard = ({ title, image, index }: ThemeCardProps) => {
+    let imageUrl =
+      image && image.trim().length > 0
+        ? image
+        : UNSPLASH_FALLBACKS[index % UNSPLASH_FALLBACKS.length];
 
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.08, duration: 0.9, ease: "easeOut" }}
-      className="group relative aspect-[3/4] min-h-[400px] w-full rounded-[2.5rem] cursor-pointer border border-white/5 overflow-hidden bg-muted"
-    >
+    // Surgical Override for Adventure
+    if (title.toLowerCase() === "adventure") {
+      imageUrl = "/images/adventure.jpg";
+    }
+
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: index * 0.08, duration: 0.9, ease: "easeOut" }}
+        className="group relative h-[420px] w-full rounded-[2.5rem] cursor-pointer border border-white/5 overflow-hidden bg-muted"
+      >
       {/* IMAGE — FORCE RENDER */}
       <img
         src={imageUrl}
