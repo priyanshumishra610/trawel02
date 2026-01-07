@@ -27,7 +27,9 @@ const ThemeCard = ({
     '1504674900247-0877df9cc836'  // Culture
   ];
 
-  const imageUrl = image || `https://images.unsplash.com/photo-${fallbacks[index % fallbacks.length]}?auto=format&fit=crop&q=80&w=800`;
+  const imageUrl = image && image.startsWith('http') 
+    ? image 
+    : `https://images.unsplash.com/photo-${fallbacks[index % fallbacks.length]}?auto=format&fit=crop&q=80&w=800`;
 
   return (
     <motion.div

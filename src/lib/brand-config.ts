@@ -45,14 +45,14 @@ export const BRAND_CONFIG = {
   ],
     travelThemes: [
       { title: "Adventure", slug: "adventure", image: "https://images.unsplash.com/photo-1506905593325-02485999c1f2?auto=format&fit=crop&q=80&w=800" },
-      { title: "Honeymoon", slug: "honeymoon", image: "/images/themes/honeymoon.jpg" },
-    { title: "Family", slug: "family", image: "/images/themes/family.jpg" },
-    { title: "Luxury Escapes", slug: "luxury", image: "/images/themes/luxury.jpg" },
-    { title: "Budget Travel", slug: "budget", image: "/images/themes/budget.jpg" },
-    { title: "Spiritual", slug: "spiritual", image: "/images/themes/spiritual.jpg" },
-    { title: "Wildlife", slug: "wildlife", image: "/images/themes/wildlife.jpg" },
-    { title: "Food & Culture", slug: "culture", image: "/images/themes/culture.jpg" },
-  ],
+      { title: "Honeymoon", slug: "honeymoon", image: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=80&w=800" },
+      { title: "Family", slug: "family", image: "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&q=80&w=800" },
+      { title: "Luxury Escapes", slug: "luxury", image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&q=80&w=800" },
+      { title: "Budget Travel", slug: "budget", image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&q=80&w=800" },
+      { title: "Spiritual", slug: "spiritual", image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=800" },
+      { title: "Wildlife", slug: "wildlife", image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&q=80&w=800" },
+      { title: "Food & Culture", slug: "culture", image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=800" },
+    ],
   destinations: [
     {
       title: "Maldives",
