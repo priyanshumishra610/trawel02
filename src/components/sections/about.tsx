@@ -4,10 +4,16 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { BRAND_CONFIG } from '@/lib/brand-config';
 import { ArrowRight } from 'lucide-react';
+import { LuxuryGlobe } from '../luxury-globe';
 
 const About = () => {
   return (
     <section id="about" className="section-padding bg-background relative overflow-hidden">
+      {/* 3D Globe Background */}
+      <div className="absolute top-1/2 -right-1/4 w-[800px] h-[800px] -translate-y-1/2 opacity-20 hidden lg:block pointer-events-none">
+        <LuxuryGlobe />
+      </div>
+
       {/* Background Motion (Subtle) */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
         <video 

@@ -10,35 +10,35 @@ gsap.registerPlugin(ScrollTrigger);
 const REVIEWS = [
   {
     id: 1,
-    name: "Sarah Jenkins",
-    location: "London, UK",
-    text: "The planning was absolutely seamless. Every detail of our Maldives retreat was handled with such care. Truly a premium experience from start to finish.",
+    name: "Jonathan Arnault",
+    location: "Paris, France",
+    text: "The level of personalization provided by Trawel.in is unmatched. Our journey through the Swiss Alps was choreographed to perfection, from private chalet dinners to sunrise helicopter tours.",
     rating: 5,
-    tag: "Smooth Planning"
+    tag: "Choreographed Excellence"
   },
   {
     id: 2,
-    name: "Marcus Chen",
-    location: "Singapore",
-    text: "Responsive support that actually cares. When our flight was delayed, the team had already rearranged our private transfer before we even landed. Impressive.",
+    name: "Sophia Mitsui",
+    location: "Tokyo, Japan",
+    text: "Navigating remote islands in Indonesia seemed daunting until we met this team. Every logistics hurdle was cleared before we even noticed it. Truly stress-free luxury.",
     rating: 5,
-    tag: "Expert Support"
+    tag: "Seamless Logistics"
   },
   {
     id: 3,
-    name: "Elena Rodriguez",
-    location: "Madrid, Spain",
-    text: "Exceeded all expectations in terms of hotel quality. The boutique properties they recommended were hidden gems we would never have found on our own.",
+    name: "Alexander Vance",
+    location: "New York, USA",
+    text: "What struck me most was the curation. Instead of the typical tourist traps, we were introduced to private estates and local artisans that made our Amalfi coast trip feel deeply personal.",
     rating: 5,
-    tag: "Hotel Quality"
+    tag: "Besoke Curation"
   },
   {
     id: 4,
-    name: "David Wilson",
-    location: "New York, USA",
-    text: "Incredible value for money. For the level of luxury provided, the pricing was significantly better than what I found on major booking sites.",
+    name: "Isabella Rossi",
+    location: "Milan, Italy",
+    text: "The 24/7 concierge was a lifesaver when we decided to extend our stay in Santorini. Within thirty minutes, our villa was booked and our return flights were updated. Remarkable service.",
     rating: 5,
-    tag: "Great Value"
+    tag: "Elite Support"
   }
 ];
 
@@ -54,24 +54,28 @@ export function GuestReviews() {
           trigger: ".reviews-header",
           start: "top 85%",
         },
-        y: 50,
+        y: 30,
         opacity: 0,
-        duration: 1,
-        ease: "power3.out"
+        duration: 1.5,
+        ease: "expo.out"
       });
 
-      // Cards staggered animation
+      // Cards staggered animation with a bit of scale
       if (cardsRef.current) {
         gsap.from(".review-card", {
           scrollTrigger: {
             trigger: cardsRef.current,
             start: "top 80%",
           },
-          y: 60,
+          y: 40,
+          scale: 0.98,
           opacity: 0,
           duration: 1.2,
-          stagger: 0.2,
-          ease: "power3.out"
+          stagger: {
+            each: 0.15,
+            ease: "power2.inOut"
+          },
+          ease: "expo.out"
         });
       }
     }, sectionRef);
@@ -82,58 +86,68 @@ export function GuestReviews() {
   return (
     <section 
       ref={sectionRef}
-      className="py-24 bg-background relative overflow-hidden"
+      id="reviews"
+      className="py-32 bg-background relative overflow-hidden border-t border-white/5"
     >
-      {/* Subtle background element */}
-      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-primary/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-secondary/5 blur-[120px] rounded-full translate-y-1/2 -translate-x-1/2" />
+      {/* Premium ambient light */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-primary/5 blur-[140px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-secondary/5 blur-[140px] rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
-      <div className="container px-4 mx-auto relative z-10">
-        <div className="reviews-header text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
-            Trusted by Travelers Across the World
-          </h2>
-          <p className="text-lg text-white/60 font-light leading-relaxed">
-            Discover why our guests choose us for their most precious moments. 
-            Real stories of discovery, luxury, and seamless exploration.
-          </p>
+      <div className="max-w-[1800px] px-6 md:px-12 mx-auto relative z-10">
+        <div className="reviews-header mb-20">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="h-[1px] w-12 bg-primary" />
+            <span className="text-[10px] uppercase tracking-[0.4em] text-primary font-bold">Client Testimonials</span>
+          </div>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <h2 className="text-4xl md:text-6xl font-display font-bold tracking-tight max-w-2xl leading-[1.1]">
+              Stories from Our <br />
+              <span className="italic font-serif text-primary">Happy Guests</span>
+            </h2>
+            <p className="text-lg text-white/40 font-light max-w-md leading-relaxed">
+              We take pride in crafting moments that linger in the memory. Here is how our travelers describe their Trawel.in experience.
+            </p>
+          </div>
         </div>
 
         <div 
           ref={cardsRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
         >
           {REVIEWS.map((review) => (
             <div 
               key={review.id}
-              className="review-card group bg-white/5 border border-white/10 p-8 rounded-2xl hover:bg-white/[0.08] hover:border-white/20 transition-all duration-500 flex flex-col justify-between h-full"
+              className="review-card group bg-white/[0.02] border border-white/[0.05] p-10 rounded-3xl hover:bg-white/[0.04] hover:border-primary/20 transition-all duration-700 flex flex-col justify-between h-full relative overflow-hidden"
             >
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/0 to-transparent group-hover:via-primary/30 transition-all duration-700" />
+              
               <div>
-                <div className="flex items-center gap-1 mb-4">
+                <div className="flex items-center gap-1 mb-6">
                   {[...Array(review.rating)].map((_, i) => (
-                    <Star key={i} size={14} className="fill-secondary text-secondary" />
+                    <Star key={i} size={12} className="fill-primary text-primary opacity-80" />
                   ))}
                 </div>
                 
-                <span className="inline-block px-3 py-1 rounded-full bg-white/5 text-[10px] uppercase tracking-wider text-white/40 mb-4 font-medium border border-white/5">
+                <span className="inline-block px-4 py-1.5 rounded-full bg-primary/5 text-[9px] uppercase tracking-[0.2em] text-primary/70 mb-6 font-bold border border-primary/10">
                   {review.tag}
                 </span>
 
-                <p className="text-white/80 leading-relaxed mb-8 font-light italic">
+                <p className="text-white/70 leading-relaxed mb-10 font-light text-base italic tracking-wide">
                   &quot;{review.text}&quot;
                 </p>
               </div>
 
-              <div className="mt-auto pt-6 border-t border-white/5 flex items-center justify-between">
+              <div className="mt-auto pt-8 border-t border-white/[0.03] flex items-center justify-between">
                 <div>
-                  <h4 className="font-semibold text-white group-hover:text-secondary transition-colors">
+                  <h4 className="font-bold text-white tracking-tight text-lg">
                     {review.name}
                   </h4>
-                  <p className="text-xs text-white/40 uppercase tracking-widest mt-1">
+                  <p className="text-[9px] text-white/30 uppercase tracking-[0.3em] mt-1.5 font-bold">
                     {review.location}
                   </p>
                 </div>
-                <Quote className="text-white/10 group-hover:text-secondary/20 transition-colors" size={24} />
+                <Quote className="text-white/[0.03] group-hover:text-primary/10 transition-all duration-700" size={32} />
               </div>
             </div>
           ))}

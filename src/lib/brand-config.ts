@@ -64,11 +64,11 @@ export const BRAND_CONFIG = {
       description: "Majestic snow-capped peaks and luxury chalets in the heart of Europe.",
       image: "https://images.unsplash.com/photo-1531310197839-ccf54634509e?auto=format&fit=crop&q=80",
     },
-    {
-      title: "Amalfi Coast",
-      description: "Dramatic cliffs and pastel-colored villages overlooking the Mediterranean.",
-      image: "https://images.unsplash.com/photo-1633321088394-88aa597a76d3?auto=format&fit=crop&q=80",
-    },
+      {
+        title: "Amalfi Coast",
+        description: "Dramatic cliffs and pastel-colored villages overlooking the Mediterranean.",
+        image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&q=80",
+      },
     {
       title: "Kyoto",
       description: "Timeless temples and serene zen gardens in Japan's cultural heart.",

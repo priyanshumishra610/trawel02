@@ -18,15 +18,15 @@ const HeroVideoWindow = () => {
   return (
     <section 
       ref={containerRef}
-      className="relative h-screen w-full overflow-hidden bg-background"
+      className="relative h-screen w-full overflow-hidden bg-black"
     >
         {/* Background Video/Image */}
           <motion.div 
             style={{ scale, y }}
-            className="absolute inset-0 z-0"
+            className="absolute inset-0 z-[1]"
           >
             {/* Dark Overlay Gradient (40-55% for readability) */}
-            <div className="absolute inset-0 bg-black/50 z-10" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/60 z-[2]" />
                 <video 
                   autoPlay 
                   muted 

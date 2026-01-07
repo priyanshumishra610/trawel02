@@ -50,47 +50,48 @@ const Navigation = () => {
     <nav 
       ref={navRef}
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-700 ${
-        isScrolled ? 'bg-background/90 backdrop-blur-xl py-3 border-b border-white/5' : 'bg-transparent py-6'
+        isScrolled ? 'bg-background/95 backdrop-blur-2xl py-3 border-b border-white/5' : 'bg-transparent py-7'
       }`}
     >
-          <div className="container flex items-center justify-between h-full">
-            {/* Logo Column */}
-            <div className="flex-1 flex items-center justify-start">
-              <Link ref={logoRef} href="/" className="relative z-50 flex flex-col group">
-                <span className="font-display text-2xl md:text-3xl font-bold tracking-tight text-white group-hover:text-primary transition-colors duration-300">
-                  TRAWEL<span className="text-primary group-hover:text-white">.</span>IN
-                  </span>
-                </Link>
-            </div>
-
-            {/* Desktop Links Column (Centered) */}
-            <div ref={linksRef} className="hidden lg:flex items-center justify-center gap-14 xl:gap-20">
-              {navLinks.map((link) => (
-                <Link 
-                  key={link.name} 
-                  href={link.href}
-                  className="text-[10px] uppercase tracking-[0.4em] text-white/60 hover:text-white transition-all duration-300 font-bold relative after:content-[''] after:absolute after:bottom-[-6px] after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[1px] after:bg-primary after:transition-all hover:after:w-4"
-                >
-                  {link.name}
-                </Link>
-              ))}
-            </div>
-
-            {/* CTA Column */}
-            <div ref={ctaRef} className="flex-1 flex items-center justify-end gap-12">
-              <div className="hidden xl:flex flex-col items-end">
-                <span className="text-[8px] uppercase tracking-[0.5em] text-white/30 mb-0.5">Global Concierge</span>
-                <a href={`tel:${BRAND_CONFIG.contact.phone}`} className="flex items-center gap-2 text-[13px] text-white hover:text-primary transition-colors font-semibold">
-                  <Phone size={12} className="text-primary" />
-                  <span className="tracking-widest">{BRAND_CONFIG.contact.phone}</span>
-                </a>
+            <div className="max-w-[1800px] mx-auto px-6 md:px-12 flex items-center justify-between h-full">
+              {/* Logo Column */}
+              <div className="flex-1 flex items-center justify-start">
+                <Link ref={logoRef} href="/" className="relative z-50 flex flex-col group">
+                  <span className="font-display text-2xl md:text-3xl font-bold tracking-tighter text-white group-hover:text-primary transition-colors duration-500">
+                    TRAWEL<span className="text-primary group-hover:text-white">.</span>IN
+                    </span>
+                  </Link>
               </div>
-              
-              <div className="hidden lg:flex items-center">
-                <Link href="#contact" className="btn btn-primary text-[9px] uppercase tracking-[0.3em] px-10 py-4 font-bold border-white/10 hover:border-primary/50 transition-all duration-500">
-                  Get Consultation
-                </Link>
+
+              {/* Desktop Links Column (Centered) */}
+              <div ref={linksRef} className="hidden lg:flex items-center justify-center gap-12 xl:gap-16">
+                {navLinks.map((link) => (
+                  <Link 
+                    key={link.name} 
+                    href={link.href}
+                    className="text-[10px] uppercase tracking-[0.45em] text-white/50 hover:text-white transition-all duration-500 font-bold relative group/link"
+                  >
+                    {link.name}
+                    <span className="absolute -bottom-1.5 left-0 w-0 h-[1px] bg-primary transition-all duration-500 group-hover/link:w-full opacity-0 group-hover/link:opacity-100" />
+                  </Link>
+                ))}
               </div>
+
+              {/* CTA Column */}
+              <div ref={ctaRef} className="flex-1 flex items-center justify-end gap-10 xl:gap-14">
+                <div className="hidden xl:flex flex-col items-end">
+                  <span className="text-[7px] uppercase tracking-[0.6em] text-white/20 mb-1 font-bold">24/7 Elite Concierge</span>
+                  <a href={`tel:${BRAND_CONFIG.contact.phone}`} className="flex items-center gap-2.5 text-[12px] text-white/90 hover:text-primary transition-colors font-bold tracking-widest">
+                    <Phone size={11} className="text-primary/70" />
+                    <span>{BRAND_CONFIG.contact.phone}</span>
+                  </a>
+                </div>
+                
+                <div className="hidden lg:flex items-center">
+                  <Link href="#contact" className="btn btn-primary text-[9px] uppercase tracking-[0.35em] px-9 py-3.5 font-bold border border-white/5 hover:border-primary/40 transition-all duration-700 shadow-xl shadow-black/20">
+                    Get Consultation
+                  </Link>
+                </div>
 
             {/* Mobile Toggle */}
             <button 
