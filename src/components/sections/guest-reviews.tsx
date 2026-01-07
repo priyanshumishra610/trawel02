@@ -10,32 +10,32 @@ gsap.registerPlugin(ScrollTrigger);
 const REVIEWS = [
   {
     id: 1,
-    name: "Jonathan Arnault",
-    location: "Paris, France",
+    name: "Priyanshu Mishra",
+    location: "Raipur, Chhatsgarh",
     text: "The level of personalization provided by Trawel.in is unmatched. Our journey through the Swiss Alps was choreographed to perfection, from private chalet dinners to sunrise helicopter tours.",
     rating: 5,
     tag: "Choreographed Excellence"
   },
   {
     id: 2,
-    name: "Sophia Mitsui",
-    location: "Tokyo, Japan",
+    name: "Prem Kumar",
+    location: "Chennai, Tamil Nadu",
     text: "Navigating remote islands in Indonesia seemed daunting until we met this team. Every logistics hurdle was cleared before we even noticed it. Truly stress-free luxury.",
     rating: 5,
     tag: "Seamless Logistics"
   },
   {
     id: 3,
-    name: "Alexander Vance",
-    location: "New York, USA",
+    name: "Rahul Sharma",
+    location: "Chandigarh, Punjab",
     text: "What struck me most was the curation. Instead of the typical tourist traps, we were introduced to private estates and local artisans that made our Amalfi coast trip feel deeply personal.",
     rating: 5,
     tag: "Besoke Curation"
   },
   {
     id: 4,
-    name: "Isabella Rossi",
-    location: "Milan, Italy",
+    name: "Riya Jain",
+    location: "Indore, Madhya Pradesh",
     text: "The 24/7 concierge was a lifesaver when we decided to extend our stay in Santorini. Within thirty minutes, our villa was booked and our return flights were updated. Remarkable service.",
     rating: 5,
     tag: "Elite Support"
@@ -87,7 +87,7 @@ export function GuestReviews() {
     <section 
       ref={sectionRef}
       id="reviews"
-      className="py-32 bg-background relative overflow-hidden border-t border-white/5"
+      className="py-32 bg-background relative border-t border-white/5"
     >
       {/* Premium ambient light */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
@@ -113,12 +113,12 @@ export function GuestReviews() {
 
         <div 
           ref={cardsRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8"
         >
           {REVIEWS.map((review) => (
             <div 
               key={review.id}
-              className="review-card group bg-white/[0.02] border border-white/[0.05] p-10 rounded-3xl hover:bg-white/[0.04] hover:border-primary/20 transition-all duration-700 flex flex-col justify-between h-full relative overflow-hidden"
+              className="review-card group bg-white/[0.02] border border-white/[0.05] p-8 xl:p-10 rounded-3xl hover:bg-white/[0.04] hover:border-primary/20 transition-all duration-700 flex flex-col justify-between h-full relative overflow-hidden"
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/0 to-transparent group-hover:via-primary/30 transition-all duration-700" />
               

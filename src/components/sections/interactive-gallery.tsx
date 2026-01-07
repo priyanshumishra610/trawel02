@@ -8,11 +8,29 @@ import { ArrowRight } from "lucide-react";
 
 const ThemeCard = ({ 
   title, 
+  image,
   index 
 }: { 
   title: string; 
+  image?: string;
   index: number 
 }) => {
+  // Reliable Unsplash fallbacks for travel themes
+  const fallbacks = [
+    '1506905593325-02485999c1f2', // Adventure - Mountain
+    '1583939003579-730e3918a45a', // Honeymoon
+    '1511895426328-dc8714191300', // Family
+    '1540541338287-41700207dee6', // Luxury
+    '1469854523086-cc02fe5d8800', // Budget
+    '1544005313-94ddf0286df2', // Spiritual
+    '1533105079780-92b9be482077', // Wildlife
+    '1504674900247-0877df9cc836'  // Culture
+  ];
+
+  const imageUrl = image && !image.startsWith('/images') 
+    ? image 
+    : `https://images.unsplash.com/photo-${fallbacks[index % fallbacks.length]}?auto=format&fit=crop&q=80&w=800`;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -22,13 +40,7 @@ const ThemeCard = ({
       className="group relative aspect-[3/4] rounded-[2.5rem] overflow-hidden cursor-pointer border border-white/5"
     >
       <Image
-        src={`https://images.unsplash.com/photo-${index === 0 ? '1533719071182-182ed503083d' : 
-               index === 1 ? '1583939003579-730e3918a45a' : 
-               index === 2 ? '1511895426328-dc8714191300' : 
-               index === 3 ? '1540541338287-41700207dee6' : 
-               index === 4 ? '1469854523086-cc02fe5d8800' : 
-               index === 5 ? '1544005313-94ddf0286df2' : 
-               index === 6 ? '1544005313-94ddf0286df2' : '1504674900247-0877df9cc836'}?auto=format&fit=crop&q=80&w=800`}
+        src={imageUrl}
         alt={title}
         fill
         className="object-cover transition-transform duration-[2000ms] group-hover:scale-110"
@@ -97,15 +109,17 @@ const InteractiveGallery = () => {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {BRAND_CONFIG.travelThemes.map((theme, i) => (
-              <ThemeCard 
-                key={theme.slug} 
-                title={theme.title} 
-                index={i} 
-              />
-          ))}
-        </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {BRAND_CONFIG.travelThemes.map((theme, i) => (
+                <ThemeCard 
+                  key={theme.slug} 
+                  title={theme.title} 
+                  image={theme.image}
+                  index={i} 
+                />
+            ))}
+          </div>
+
         
         {/* Bottom CTA */}
         <motion.div 

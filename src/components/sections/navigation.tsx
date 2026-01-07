@@ -53,55 +53,55 @@ const Navigation = () => {
         isScrolled ? 'bg-background/95 backdrop-blur-2xl py-3 border-b border-white/5' : 'bg-transparent py-7'
       }`}
     >
-            <div className="max-w-[1800px] mx-auto px-6 md:px-12 flex items-center justify-between h-full">
-              {/* Logo Column */}
-              <div className="flex-1 flex items-center justify-start">
-                <Link ref={logoRef} href="/" className="relative z-50 flex flex-col group">
-                  <span className="font-display text-2xl md:text-3xl font-bold tracking-tighter text-white group-hover:text-primary transition-colors duration-500">
-                    TRAWEL<span className="text-primary group-hover:text-white">.</span>IN
-                    </span>
-                  </Link>
-              </div>
-
-              {/* Desktop Links Column (Centered) */}
-              <div ref={linksRef} className="hidden lg:flex items-center justify-center gap-12 xl:gap-16">
-                {navLinks.map((link) => (
-                  <Link 
-                    key={link.name} 
-                    href={link.href}
-                    className="text-[10px] uppercase tracking-[0.45em] text-white/50 hover:text-white transition-all duration-500 font-bold relative group/link"
-                  >
-                    {link.name}
-                    <span className="absolute -bottom-1.5 left-0 w-0 h-[1px] bg-primary transition-all duration-500 group-hover/link:w-full opacity-0 group-hover/link:opacity-100" />
-                  </Link>
-                ))}
-              </div>
-
-              {/* CTA Column */}
-              <div ref={ctaRef} className="flex-1 flex items-center justify-end gap-10 xl:gap-14">
-                <div className="hidden xl:flex flex-col items-end">
-                  <span className="text-[7px] uppercase tracking-[0.6em] text-white/20 mb-1 font-bold">24/7 Elite Concierge</span>
-                  <a href={`tel:${BRAND_CONFIG.contact.phone}`} className="flex items-center gap-2.5 text-[12px] text-white/90 hover:text-primary transition-colors font-bold tracking-widest">
-                    <Phone size={11} className="text-primary/70" />
-                    <span>{BRAND_CONFIG.contact.phone}</span>
-                  </a>
-                </div>
-                
-                <div className="hidden lg:flex items-center">
-                  <Link href="#contact" className="btn btn-primary text-[9px] uppercase tracking-[0.35em] px-9 py-3.5 font-bold border border-white/5 hover:border-primary/40 transition-all duration-700 shadow-xl shadow-black/20">
-                    Get Consultation
-                  </Link>
-                </div>
-
-            {/* Mobile Toggle */}
-            <button 
-              className="lg:hidden relative z-50 p-2 text-white hover:text-primary transition-colors"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-            </button>
-          </div>
+      <div className="max-w-[1800px] mx-auto px-6 md:px-12 grid grid-cols-2 lg:grid-cols-3 items-center h-full relative">
+        {/* Logo Column */}
+        <div className="flex items-center justify-start">
+          <Link ref={logoRef} href="/" className="relative z-50 flex flex-col group">
+            <span className="font-display text-2xl md:text-3xl font-bold tracking-tighter text-white group-hover:text-primary transition-colors duration-500">
+              TRAWEL<span className="text-primary group-hover:text-white">.</span>IN
+            </span>
+          </Link>
         </div>
+
+        {/* Desktop Links Column (Centered) */}
+        <div ref={linksRef} className="hidden lg:flex items-center justify-center gap-10 xl:gap-14">
+          {navLinks.map((link) => (
+            <Link 
+              key={link.name} 
+              href={link.href}
+              className="text-[10px] uppercase tracking-[0.45em] text-white/50 hover:text-white transition-all duration-500 font-bold relative group/link whitespace-nowrap"
+            >
+              {link.name}
+              <span className="absolute -bottom-1.5 left-0 w-0 h-[1px] bg-primary transition-all duration-500 group-hover/link:w-full opacity-0 group-hover/link:opacity-100" />
+            </Link>
+          ))}
+        </div>
+
+        {/* Right Column: Contact + CTA + Mobile Toggle */}
+        <div ref={ctaRef} className="flex items-center justify-end gap-8 xl:gap-12">
+          <div className="hidden xl:flex flex-col items-end">
+            <span className="text-[7px] uppercase tracking-[0.6em] text-white/20 mb-1 font-bold">24/7 Elite Concierge</span>
+            <a href={`tel:${BRAND_CONFIG.contact.phone}`} className="flex items-center gap-2.5 text-[11px] text-white/90 hover:text-primary transition-colors font-bold tracking-widest">
+              <Phone size={10} className="text-primary/70" />
+              <span>{BRAND_CONFIG.contact.phone}</span>
+            </a>
+          </div>
+          
+          <div className="hidden lg:flex items-center">
+            <Link href="#contact" className="btn btn-primary text-[9px] uppercase tracking-[0.35em] px-8 py-3 font-bold border border-white/5 hover:border-primary/40 transition-all duration-700 shadow-xl shadow-black/20">
+              Get Consultation
+            </Link>
+          </div>
+
+          <button 
+            className="lg:hidden relative z-50 p-2 text-white hover:text-primary transition-colors"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+      </div>
+
 
       {/* Mobile Menu */}
       <AnimatePresence>
