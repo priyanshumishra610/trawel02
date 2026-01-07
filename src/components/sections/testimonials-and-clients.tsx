@@ -23,35 +23,44 @@ const TestimonialsAndClients = () => {
   }, [nextTestimonial]);
 
   return (
-    <section className="relative py-24 overflow-hidden bg-background">
-      {/* Background with luxury texture */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
-        style={{ 
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 86c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm66-3c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm-46-45c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm40 24c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E")`,
-        }}
-      />
+    <section className="relative py-32 overflow-hidden bg-background">
+      {/* Background Motion (Subtle) */}
+      <div className="absolute inset-0 opacity-[0.05] pointer-events-none">
+        <video 
+          autoPlay 
+          muted 
+          loop 
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-hand-pouring-sparkling-wine-into-a-glass-23024-large.mp4" type="video/mp4" />
+        </video>
+      </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+      <div className="container relative z-10">
+        <div className="flex flex-col lg:flex-row items-center gap-24 lg:gap-32">
           {/* Content Side */}
           <div className="flex-1 text-left">
-            <motion.span
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-primary font-medium tracking-[0.2em] uppercase text-sm mb-4 block"
+              className="flex items-center gap-3 mb-6"
             >
-              Guest Experiences
-            </motion.span>
+              <div className="h-[1px] w-12 bg-primary/40" />
+              <span className="text-primary text-[10px] uppercase tracking-[0.5em] font-bold">
+                Guest Chronicles
+              </span>
+            </motion.div>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-4xl md:text-5xl font-display font-bold text-white mb-8 leading-tight"
+              className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-10 leading-tight tracking-tight"
             >
-              What Our Discerning <br />
-              <span className="text-secondary italic">Travelers Say</span>
+              The Voices of Our <br />
+              <span className="text-primary/80 italic">Global Community.</span>
             </motion.h2>
             
             <motion.div
@@ -59,48 +68,48 @@ const TestimonialsAndClients = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="flex gap-4 mb-8"
+              className="flex gap-6 mb-8"
             >
               <button
                 onClick={prevTestimonial}
-                className="h-12 w-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-primary hover:border-primary transition-all duration-300"
+                className="h-14 w-14 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-primary hover:border-primary transition-all duration-700 group/btn"
               >
-                <ChevronLeft className="w-6 h-6" />
+                <ChevronLeft className="w-6 h-6 group-hover/btn:-translate-x-1 transition-transform" />
               </button>
               <button
                 onClick={nextTestimonial}
-                className="h-12 w-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-primary hover:border-primary transition-all duration-300"
+                className="h-14 w-14 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-primary hover:border-primary transition-all duration-700 group/btn"
               >
-                <ChevronRight className="w-6 h-6" />
+                <ChevronRight className="w-6 h-6 group-hover/btn:translate-x-1 transition-transform" />
               </button>
             </motion.div>
           </div>
 
           {/* Slider Side */}
           <div className="flex-1 w-full max-w-2xl">
-            <div className="relative h-[400px]">
+            <div className="relative h-[450px]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeIndex}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.5 }}
-                  className="glass p-10 md:p-12 rounded-3xl relative h-full flex flex-col justify-center"
+                  initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 1.05, y: -20 }}
+                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                  className="bg-white/[0.02] border border-white/5 p-12 md:p-16 rounded-[3rem] relative h-full flex flex-col justify-center backdrop-blur-3xl"
                 >
-                  <Quote className="absolute top-8 left-8 w-12 h-12 text-primary/20" />
+                  <Quote className="absolute top-12 right-12 w-16 h-16 text-primary/10" />
                   
-                  <p className="text-xl md:text-2xl text-white/90 leading-relaxed font-light italic mb-10 relative z-10">
+                  <p className="text-xl md:text-2xl text-white/60 leading-relaxed font-light italic mb-12 relative z-10">
                     "{BRAND_CONFIG.testimonials[activeIndex].quote}"
                   </p>
                   
-                  <div className="flex items-center gap-4">
-                    <div className="h-px w-8 bg-secondary" />
+                  <div className="flex items-center gap-6">
+                    <div className="h-px w-12 bg-primary/40" />
                     <div>
-                      <h4 className="text-white font-bold text-lg">
+                      <h4 className="text-white font-bold text-xl tracking-tight">
                         {BRAND_CONFIG.testimonials[activeIndex].author}
                       </h4>
-                      <p className="text-secondary text-sm uppercase tracking-widest font-medium">
+                      <p className="text-primary text-[10px] uppercase tracking-[0.4em] font-bold mt-1">
                         {BRAND_CONFIG.testimonials[activeIndex].role}
                       </p>
                     </div>
@@ -112,17 +121,16 @@ const TestimonialsAndClients = () => {
         </div>
 
         {/* Brand Trust Section */}
-        <div className="mt-32 pt-16 border-t border-white/10">
-          <p className="text-center text-white/40 uppercase tracking-[0.3em] text-xs mb-12">
-            Trusted by Leaders from
+        <div className="mt-40 pt-20 border-t border-white/5">
+          <p className="text-center text-white/30 uppercase tracking-[0.5em] text-[9px] font-bold mb-16">
+            Trusted by Visionaries From
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-            {/* Using text-based logos for premium feel if images aren't perfect, or just keeping the structure */}
-            <span className="text-2xl font-bold text-white/80 tracking-tighter">BECTOR'S</span>
-            <span className="text-2xl font-serif text-white/80 italic">Bikaner</span>
-            <span className="text-2xl font-black text-white/80">HALDIRAM</span>
-            <span className="text-2xl font-display text-white/80">JAQUAR</span>
-            <span className="text-2xl font-bold text-white/80 tracking-widest">TRIDENT</span>
+          <div className="flex flex-wrap justify-center items-center gap-16 md:gap-28 opacity-40 grayscale hover:grayscale-0 transition-all duration-1000">
+            <span className="text-2xl md:text-3xl font-bold text-white tracking-tighter hover:text-primary transition-colors cursor-default">BECTOR'S</span>
+            <span className="text-2xl md:text-3xl font-serif text-white italic hover:text-primary transition-colors cursor-default">Bikaner</span>
+            <span className="text-2xl md:text-3xl font-black text-white hover:text-primary transition-colors cursor-default">HALDIRAM</span>
+            <span className="text-2xl md:text-3xl font-display text-white hover:text-primary transition-colors cursor-default">JAQUAR</span>
+            <span className="text-2xl md:text-3xl font-bold text-white tracking-[0.3em] hover:text-primary transition-colors cursor-default">TRIDENT</span>
           </div>
         </div>
       </div>
