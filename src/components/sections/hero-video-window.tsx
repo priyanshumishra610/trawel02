@@ -21,23 +21,25 @@ const HeroVideoWindow = () => {
       ref={containerRef}
       className="relative h-screen w-full overflow-hidden bg-background"
     >
-      {/* Background Video/Image */}
-      <motion.div 
-        style={{ scale, y }}
-        className="absolute inset-0 z-0"
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background z-10" />
-        <div className="absolute inset-0 bg-black/20 z-10" />
-          <video 
-            autoPlay 
-            muted 
-            loop 
-            playsInline
-            className="h-full w-full object-cover"
-          >
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-top-view-of-a-luxury-resort-in-the-maldives-40018-large.mp4" type="video/mp4" />
-          </video>
-      </motion.div>
+        {/* Background Video/Image */}
+        <motion.div 
+          style={{ scale, y }}
+          className="absolute inset-0 z-0"
+        >
+          {/* Dark Overlay Gradient (40-55% for readability) */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-background z-10" />
+          <div className="absolute inset-0 bg-black/20 z-10" />
+            <video 
+              autoPlay 
+              muted 
+              loop 
+              playsInline
+              preload="auto"
+              className="h-full w-full object-cover"
+            >
+              <source src="/videos/hero.mp4" type="video/mp4" />
+            </video>
+        </motion.div>
 
       {/* Content */}
       <div className="container relative z-20 h-full flex flex-col justify-center pt-20">
@@ -58,17 +60,17 @@ const HeroVideoWindow = () => {
             </span>
           </div>
 
-          <h1 className="text-white mb-8">
-            {BRAND_CONFIG.tagline.split(' ').map((word, i) => (
-              <span key={i} className={i === 1 ? "text-primary italic" : ""}>
-                {word}{" "}
-              </span>
-            ))}
-          </h1>
+            <h1 className="text-white mb-8 tracking-tight font-bold">
+              {BRAND_CONFIG.tagline.split(' ').map((word, i) => (
+                <span key={i} className={i === 1 ? "text-primary italic font-serif" : ""}>
+                  {word}{" "}
+                </span>
+              ))}
+            </h1>
 
-          <p className="text-lg md:text-xl text-white/80 mb-12 max-w-2xl leading-relaxed">
-            {BRAND_CONFIG.description}
-          </p>
+            <p className="text-lg md:text-xl text-white/80 mb-12 max-w-2xl leading-relaxed tracking-wide font-light">
+              {BRAND_CONFIG.description}
+            </p>
 
           <div className="flex flex-col sm:flex-row gap-5">
             <button className="btn btn-primary group">
@@ -86,14 +88,14 @@ const HeroVideoWindow = () => {
       </div>
 
       {/* Trust Bar / Stats */}
-      <motion.div 
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.6 }}
-        className="absolute bottom-0 left-0 w-full z-30"
-      >
-        <div className="container pb-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-8 border-t border-white/10 backdrop-blur-sm bg-black/20 rounded-t-3xl px-8">
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="absolute bottom-0 left-0 w-full z-30"
+        >
+          <div className="container">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-10 border-t border-white/10 backdrop-blur-md bg-black/30 rounded-t-[2.5rem] px-10 shadow-2xl">
             {BRAND_CONFIG.stats.map((stat, i) => (
               <div key={i} className="flex flex-col">
                 <span className="text-2xl md:text-3xl font-display font-bold text-primary">
