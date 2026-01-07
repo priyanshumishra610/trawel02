@@ -59,11 +59,8 @@ const Navigation = () => {
               <Link ref={logoRef} href="/" className="relative z-50 flex flex-col group">
                 <span className="font-display text-2xl md:text-3xl font-bold tracking-tight text-white group-hover:text-primary transition-colors duration-300">
                   TRAWEL<span className="text-primary group-hover:text-white">.</span>IN
-                </span>
-                <span className="text-[9px] uppercase tracking-[0.5em] text-white/40 -mt-1 font-semibold">
-                  by InstaHelp
-                </span>
-              </Link>
+                  </span>
+                </Link>
             </div>
 
             {/* Desktop Links Column (Centered) */}
