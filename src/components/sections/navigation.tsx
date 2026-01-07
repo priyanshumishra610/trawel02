@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import NextImage from 'next/image';
 import { BRAND_CONFIG } from '@/lib/brand-config';
 import { Menu, X, Phone, Mail } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -58,16 +57,9 @@ const Navigation = () => {
         {/* Logo Section */}
         <div className="flex-shrink-0">
           <Link ref={logoRef} href="/" className="relative z-50 flex items-center group">
-            <div className="relative h-9 w-auto aspect-[3/1]">
-              <NextImage 
-                src="/images/logo.png"
-                alt={BRAND_CONFIG.name}
-                fill
-                className="object-contain group-hover:opacity-80 transition-opacity duration-300"
-                priority
-              />
-            </div>
-            <span className="sr-only">{BRAND_CONFIG.name}</span>
+            <span className="text-xl md:text-2xl font-display font-bold tracking-tighter text-white group-hover:text-primary transition-colors duration-300">
+              Trawel<span className="text-primary">.in</span>
+            </span>
           </Link>
         </div>
 
