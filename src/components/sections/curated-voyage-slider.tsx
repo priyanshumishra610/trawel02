@@ -107,32 +107,34 @@ const CuratedVoyageSlider = () => {
               </AnimatePresence>
 
 
-            {/* Navigation Controls */}
-            <div className="absolute bottom-12 right-12 flex gap-6 z-20">
-              <button
-                onClick={slidePrev}
-                className="h-16 w-16 rounded-full border border-white/10 bg-white/5 backdrop-blur-2xl text-white flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-700 group/btn"
-              >
-                <ChevronLeft className="w-6 h-6 group-hover/btn:-translate-x-1 transition-transform" />
-              </button>
-              <button
-                onClick={slideNext}
-                className="h-16 w-16 rounded-full border border-white/10 bg-white/5 backdrop-blur-2xl text-white flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-700 group/btn"
-              >
-                <ChevronRight className="w-6 h-6 group-hover/btn:translate-x-1 transition-transform" />
-              </button>
+              {/* Navigation Controls */}
+              <div className="absolute bottom-12 right-12 flex gap-6 z-20" style={{ transform: "translateZ(0)" }}>
+                <button
+                  onClick={slidePrev}
+                  className="h-16 w-16 rounded-full border border-white/10 bg-white/5 backdrop-blur-2xl text-white flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-700 group/btn"
+                  style={{ transform: "translateZ(0)", willChange: "transform" }}
+                >
+                  <ChevronLeft className="w-6 h-6 group-hover/btn:-translate-x-1 transition-transform" />
+                </button>
+                <button
+                  onClick={slideNext}
+                  className="h-16 w-16 rounded-full border border-white/10 bg-white/5 backdrop-blur-2xl text-white flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-700 group/btn"
+                  style={{ transform: "translateZ(0)", willChange: "transform" }}
+                >
+                  <ChevronRight className="w-6 h-6 group-hover/btn:translate-x-1 transition-transform" />
+                </button>
+              </div>
             </div>
-          </div>
-
-          {/* Floating Info Box */}
-          <motion.div
-            key={currentIndex + "-info"}
-            initial={{ opacity: 0, x: -50, y: 20 }}
-            animate={{ opacity: 1, x: 0, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="absolute -bottom-12 left-6 md:left-20 max-w-lg w-[calc(100%-3rem)] md:w-auto bg-white/5 backdrop-blur-3xl p-12 md:p-16 rounded-[2.5rem] border border-white/10 shadow-luxury z-30"
-            style={{ willChange: "transform, opacity" }}
-          >
+  
+            {/* Floating Info Box */}
+            <motion.div
+              key={currentIndex + "-info"}
+              initial={{ opacity: 0, x: -50, y: 20 }}
+              animate={{ opacity: 1, x: 0, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+              className="absolute -bottom-12 left-6 md:left-20 max-w-lg w-[calc(100%-3rem)] md:w-auto bg-white/5 backdrop-blur-3xl p-12 md:p-16 rounded-[2.5rem] border border-white/10 shadow-luxury z-30"
+              style={{ willChange: "transform, opacity", transform: "translateZ(0)" }}
+            >
             <div className="flex items-center gap-4 text-primary mb-6">
               <MapPin className="w-4 h-4" />
               <span className="text-[10px] font-bold uppercase tracking-[0.4em]">

@@ -72,11 +72,11 @@ const HeroVideoWindow = () => {
             </p>
 
           <div className="flex flex-col sm:flex-row gap-4 md:gap-5">
-            <button className="btn btn-primary group tracking-[0.25em] text-[10px] py-5 px-10 w-full sm:w-auto min-h-[56px] flex items-center justify-center">
+            <button className="btn btn-primary group tracking-[0.25em] text-[10px] py-5 px-10 w-full sm:w-auto min-h-[56px] flex items-center justify-center" style={{ transform: "translateZ(0)", willChange: "transform" }}>
               <span>Get Free Travel Consultation</span>
               <ArrowRight className="inline-block ml-2 group-hover:translate-x-1 transition-transform" size={18} />
             </button>
-            <button className="btn btn-secondary flex items-center justify-center gap-3 group tracking-[0.25em] text-[10px] py-5 px-10 w-full sm:w-auto min-h-[56px]">
+            <button className="btn btn-secondary flex items-center justify-center gap-3 group tracking-[0.25em] text-[10px] py-5 px-10 w-full sm:w-auto min-h-[56px]" style={{ transform: "translateZ(0)", willChange: "transform" }}>
               <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-all">
                 <Play size={14} fill="currentColor" />
               </div>

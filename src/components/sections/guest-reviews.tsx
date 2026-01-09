@@ -140,13 +140,14 @@ export function GuestReviews() {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8">
-          {REVIEWS.map((review) => (
-            <div
-              key={review.id}
-              className="review-card group bg-white/[0.02] border border-white/[0.05] p-8 xl:p-10 rounded-3xl hover:bg-white/[0.04] hover:border-primary/20 transition-all duration-700 flex flex-col justify-between h-full relative"
-            >
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/0 to-transparent group-hover:via-primary/30 transition-all duration-700" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8">
+            {REVIEWS.map((review) => (
+              <div
+                key={review.id}
+                className="review-card group bg-white/[0.02] border border-white/[0.05] p-8 xl:p-10 rounded-3xl hover:bg-white/[0.04] hover:border-primary/20 transition-all duration-700 flex flex-col justify-between h-full relative"
+                style={{ transform: "translateZ(0)", willChange: "transform, opacity" }}
+              >
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/0 to-transparent group-hover:via-primary/30 transition-all duration-700" />
 
               <div>
                 <div className="flex items-center gap-1 mb-6">

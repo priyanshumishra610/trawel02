@@ -43,7 +43,7 @@ export function DestinationsShowcase() {
 
   const splitText = (text: string) => {
     return text.split("").map((char, i) => (
-      <span key={i} className="char inline-block">
+      <span key={i} className="char inline-block" style={{ transform: "translateZ(0)", willChange: "transform, opacity" }}>
         {char === " " ? "\u00A0" : char}
       </span>
     ));

@@ -125,11 +125,11 @@ export function LuxuryParticles() {
     };
   }, []);
 
-  return (
-    <canvas
-      ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-[5] opacity-60"
-      style={{ mixBlendMode: "screen", willChange: "transform" }}
-    />
-  );
+    return (
+      <canvas
+        ref={canvasRef}
+        className="fixed inset-0 pointer-events-none z-[5] opacity-60"
+        style={{ mixBlendMode: "screen", willChange: "transform", contain: "strict" }}
+      />
+    );
 }

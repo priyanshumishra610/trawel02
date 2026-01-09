@@ -107,10 +107,10 @@ export function CinematicStorytelling() {
               
               <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/50 pointer-events-none" />
     
-              <div className="relative z-10 text-center px-6 max-w-5xl">
-                <span className="panel-tagline block text-primary text-[10px] md:text-[12px] uppercase tracking-[0.6em] font-bold mb-6" style={{ willChange: "transform, opacity, filter" }}>
-                  {panel.tagline}
-                </span>
+                <div className="relative z-10 text-center px-6 max-w-5xl" style={{ transform: "translateZ(0)" }}>
+                  <span className="panel-tagline block text-primary text-[10px] md:text-[12px] uppercase tracking-[0.6em] font-bold mb-6" style={{ willChange: "transform, opacity, filter" }}>
+                    {panel.tagline}
+                  </span>
                 <h2 className="panel-headline font-display text-4xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight leading-none" style={{ willChange: "transform, opacity, filter" }}>
                   {panel.headline}
                 </h2>

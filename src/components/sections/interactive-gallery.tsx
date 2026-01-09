@@ -50,13 +50,14 @@ const UNSPLASH_FALLBACKS = [
         viewport={{ once: true }}
         transition={{ delay: index * 0.08, duration: 0.9, ease: "easeOut" }}
         className="group relative h-[420px] w-full rounded-[2.5rem] cursor-pointer border border-white/5 overflow-hidden bg-muted"
+        style={{ transform: "translateZ(0)" }}
       >
       {/* IMAGE — FORCE RENDER */}
       <img
         src={imageUrl}
         alt={title}
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110 z-0"
-        style={{ willChange: "transform" }}
+        style={{ willChange: "transform", transform: "translateZ(0)" }}
         loading={index === 0 ? "eager" : "lazy"}
       />
 
@@ -84,11 +85,12 @@ const UNSPLASH_FALLBACKS = [
 };
 
 const InteractiveGallery = () => {
-  return (
-    <section
-      id="themes"
-      className="section-padding bg-background relative overflow-visible"
-    >
+    return (
+      <section
+        id="themes"
+        className="section-padding bg-background relative overflow-visible"
+        style={{ contain: "paint layout" }}
+      >
       {/* Ambient glow */}
       <div className="absolute inset-0 bg-primary/5 blur-[120px] pointer-events-none" />
 
