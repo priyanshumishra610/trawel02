@@ -105,13 +105,14 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-background/98 backdrop-blur-3xl z-40 flex flex-col pt-32 px-10"
-            >
+            {isMobileMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 bg-background/98 backdrop-blur-3xl z-40 flex flex-col pt-32 px-10"
+                style={{ contain: "paint", willChange: "opacity" }}
+              >
               {/* Decorative light */}
               <div className="absolute top-0 right-0 w-2/3 h-1/2 bg-primary/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
               

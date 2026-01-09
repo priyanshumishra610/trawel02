@@ -49,72 +49,72 @@ export function DestinationsShowcase() {
     ));
   };
 
-  return (
-    <section ref={sectionRef} id="destinations" className="py-20 md:py-32 bg-background relative overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[200px] pointer-events-none" />
-      
-      <div className="container relative z-10">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-24 gap-8 md:gap-12">
-          <div className="max-w-3xl">
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
+    return (
+      <section ref={sectionRef} id="destinations" className="py-20 md:py-32 bg-background relative overflow-hidden" style={{ contain: "paint" }}>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[200px] pointer-events-none" />
+        
+        <div className="container relative z-10">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-24 gap-8 md:gap-12">
+            <div className="max-w-3xl">
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="flex items-center gap-3 mb-6"
+              >
+                <div className="h-[1px] w-12 bg-primary/40" />
+                <span className="text-primary text-[10px] uppercase tracking-[0.5em] font-bold">
+                  Curated Destinations
+                </span>
+              </motion.div>
+              <h2 
+                ref={headingRef}
+                className="text-white text-4xl md:text-5xl lg:text-6xl tracking-tight leading-tight font-display"
+              >
+                {splitText("Where Will Your")}
+                <br className="hidden md:block" />
+                <span className="text-primary/80 italic">
+                  {splitText("Journey Begin?")}
+                </span>
+              </h2>
+            </div>
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="flex items-center gap-3 mb-6"
+              transition={{ delay: 0.2 }}
+              className="max-w-sm pb-2"
             >
-              <div className="h-[1px] w-12 bg-primary/40" />
-              <span className="text-primary text-[10px] uppercase tracking-[0.5em] font-bold">
-                Curated Destinations
-              </span>
+              <p className="text-white/40 text-base md:text-lg font-light leading-relaxed">
+                Hover to preview the cinematic beauty of each destination. Every location is hand-selected for its extraordinary character.
+              </p>
             </motion.div>
-            <h2 
-              ref={headingRef}
-              className="text-white text-4xl md:text-5xl lg:text-6xl tracking-tight leading-tight font-display"
-            >
-              {splitText("Where Will Your")}
-              <br className="hidden md:block" />
-              <span className="text-primary/80 italic">
-                {splitText("Journey Begin?")}
-              </span>
-            </h2>
           </div>
+  
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {BRAND_CONFIG.destinations.map((destination, i) => (
+              <DestinationHoverCard
+                key={destination.title}
+                title={destination.title}
+                description={destination.description}
+                image={destination.image}
+                index={i}
+              />
+            ))}
+          </div>
+  
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="max-w-sm pb-2"
+            className="mt-20 flex justify-center"
           >
-            <p className="text-white/40 text-base md:text-lg font-light leading-relaxed">
-              Hover to preview the cinematic beauty of each destination. Every location is hand-selected for its extraordinary character.
-            </p>
+            <button className="btn btn-secondary px-12 py-5 rounded-full text-[10px] uppercase tracking-[0.4em] font-bold flex items-center gap-4 group border border-white/10 hover:border-primary/50 transition-all duration-500">
+              <span>View All Destinations</span>
+              <ArrowRight className="group-hover:translate-x-2 transition-transform duration-500" size={16} />
+            </button>
           </motion.div>
         </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {BRAND_CONFIG.destinations.map((destination, i) => (
-            <DestinationHoverCard
-              key={destination.title}
-              title={destination.title}
-              description={destination.description}
-              image={destination.image}
-              index={i}
-            />
-          ))}
-        </div>
-
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-20 flex justify-center"
-        >
-          <button className="btn btn-secondary px-12 py-5 rounded-full text-[10px] uppercase tracking-[0.4em] font-bold flex items-center gap-4 group border border-white/10 hover:border-primary/50 transition-all duration-500">
-            <span>View All Destinations</span>
-            <ArrowRight className="group-hover:translate-x-2 transition-transform duration-500" size={16} />
-          </button>
-        </motion.div>
-      </div>
-    </section>
-  );
+      </section>
+    );
 }

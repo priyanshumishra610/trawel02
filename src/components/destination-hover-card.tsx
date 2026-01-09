@@ -55,31 +55,33 @@ export function DestinationHoverCard({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="absolute inset-0 w-full h-full">
-        <Image
-          src={image}
-          alt={title}
-          fill
-          className={`object-cover transition-all duration-1000 ease-out ${
-            isHovered ? "scale-110 opacity-0" : "scale-100 opacity-100"
-          }`}
-        />
-        
-        {videoUrl && (
-          <video
-            ref={videoRef}
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-out ${
-              isHovered ? "scale-105 opacity-100" : "scale-110 opacity-0"
+        <div className="absolute inset-0 w-full h-full" style={{ willChange: "transform, opacity" }}>
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className={`object-cover transition-all duration-1000 ease-out ${
+              isHovered ? "scale-110 opacity-0" : "scale-100 opacity-100"
             }`}
-          >
-            <source src={videoUrl} type="video/mp4" />
-          </video>
-        )}
-      </div>
+            style={{ willChange: "transform, opacity" }}
+          />
+          
+          {videoUrl && (
+            <video
+              ref={videoRef}
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-out ${
+                isHovered ? "scale-105 opacity-100" : "scale-110 opacity-0"
+              }`}
+              style={{ willChange: "transform, opacity" }}
+            >
+              <source src={videoUrl} type="video/mp4" />
+            </video>
+          )}
+        </div>
 
       <div 
         className={`absolute inset-0 transition-all duration-700 ${

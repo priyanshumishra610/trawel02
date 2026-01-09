@@ -75,7 +75,7 @@ const CuratedVoyageSlider = () => {
           </div>
         </div>
 
-        <div className="relative max-w-7xl mx-auto">
+        <div className="relative max-w-7xl mx-auto" style={{ contain: "paint" }}>
           <div className="relative aspect-[16/9] md:aspect-[21/8] rounded-[3rem] overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.5)] border border-white/5 group">
             <AnimatePresence initial={false} custom={direction} mode="popLayout">
               <motion.div
@@ -91,12 +91,14 @@ const CuratedVoyageSlider = () => {
                   scale: { duration: 1.2 }
                 }}
                 className="absolute inset-0"
+                style={{ willChange: "transform, opacity" }}
               >
                 <Image
                   src={currentDestination.image}
                   alt={currentDestination.title}
                   fill
                   className="object-cover transition-transform duration-[4000ms] ease-out scale-105 group-hover:scale-110"
+                  style={{ willChange: "transform" }}
                   priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-90" />
@@ -128,6 +130,7 @@ const CuratedVoyageSlider = () => {
             animate={{ opacity: 1, x: 0, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
             className="absolute -bottom-12 left-6 md:left-20 max-w-lg w-[calc(100%-3rem)] md:w-auto bg-white/5 backdrop-blur-3xl p-12 md:p-16 rounded-[2.5rem] border border-white/10 shadow-luxury z-30"
+            style={{ willChange: "transform, opacity" }}
           >
             <div className="flex items-center gap-4 text-primary mb-6">
               <MapPin className="w-4 h-4" />

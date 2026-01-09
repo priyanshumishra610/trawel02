@@ -80,11 +80,29 @@ export function LuxuryParticles() {
     };
 
     const animate = () => {
+      // Check if tab is active
+      if (document.hidden) {
+        animationId = requestAnimationFrame(animate);
+        return;
+      }
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
+      const isMobile = window.innerWidth <= 768;
+
       particles.forEach((particle) => {
         particle.update();
-        particle.draw();
+        
+        // Optimize drawing for mobile: skip radial gradient if on mobile
+        if (isMobile) {
+          if (!ctx) return;
+          ctx.beginPath();
+          ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(212, 175, 55, ${particle.opacity})`;
+          ctx.fill();
+        } else {
+          particle.draw();
+        }
       });
 
       animationId = requestAnimationFrame(animate);

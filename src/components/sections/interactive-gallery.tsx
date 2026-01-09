@@ -56,6 +56,7 @@ const UNSPLASH_FALLBACKS = [
         src={imageUrl}
         alt={title}
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110 z-0"
+        style={{ willChange: "transform" }}
         loading={index === 0 ? "eager" : "lazy"}
       />
 

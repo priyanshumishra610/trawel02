@@ -21,10 +21,10 @@ const HeroVideoWindow = () => {
       className="relative min-h-screen md:h-screen w-full overflow-hidden bg-black flex flex-col md:block"
     >
         {/* Background Video/Image */}
-          <motion.div 
-            style={{ scale, y }}
-            className="absolute inset-0 z-[1]"
-          >
+            <motion.div 
+              style={{ scale, y, willChange: "transform, scale" }}
+              className="absolute inset-0 z-[1]"
+            >
             {/* Dark Overlay Gradient (40-55% for readability) */}
             <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80 z-[2]" />
                 <video 
