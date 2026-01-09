@@ -9,7 +9,7 @@ const icons = [Globe, Clock, BadgePercent, ShieldCheck];
 
 const WhyChooseUs = () => {
   return (
-    <section id="why-us" className="pb-24 md:pb-32 bg-background relative overflow-hidden pt-16 md:pt-24">
+    <section id="why-us" className="pb-20 md:pb-32 bg-background relative overflow-hidden pt-12 md:pt-24">
       {/* Background Motion Video (Subtle) */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <video 
@@ -27,7 +27,7 @@ const WhyChooseUs = () => {
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
       
       <div className="container relative z-10">
-        <div className="max-w-3xl mb-16 md:mb-24 pt-10">
+        <div className="max-w-3xl mb-12 md:mb-24 pt-10">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -53,7 +53,7 @@ const WhyChooseUs = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-white/40 text-lg md:text-xl font-light leading-relaxed max-w-2xl"
+            className="text-white/40 text-base md:text-xl font-light leading-relaxed max-w-2xl"
             >
               We don&apos;t just book trips; we craft experiences. Discover why thousands of travelers trust Trawel.in over big booking engines.
             </motion.p>
@@ -69,7 +69,7 @@ const WhyChooseUs = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="group p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/5 hover:bg-white/[0.05] hover:border-primary/30 transition-all duration-700 backdrop-blur-sm"
+                className="group p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] bg-white/[0.02] border border-white/5 hover:bg-white/[0.05] hover:border-primary/30 transition-all duration-700 backdrop-blur-sm"
               >
                 <div className="w-16 h-16 rounded-[1.25rem] bg-white/[0.03] flex items-center justify-center text-primary mb-8 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-700 border border-white/5">
                   <Icon size={30} strokeWidth={1.5} />
@@ -90,18 +90,18 @@ const WhyChooseUs = () => {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-32 p-1 md:p-1.5 rounded-[3.5rem] bg-gradient-to-br from-white/10 to-transparent border border-white/5 overflow-hidden"
+          className="mt-20 md:mt-32 p-1 md:p-1.5 rounded-[2.5rem] md:rounded-[3.5rem] bg-gradient-to-br from-white/10 to-transparent border border-white/5 overflow-hidden"
         >
-          <div className="bg-background/40 backdrop-blur-2xl rounded-[3.4rem] p-12 md:p-20 relative overflow-hidden">
+          <div className="bg-background/40 backdrop-blur-2xl rounded-[2.4rem] md:rounded-[3.4rem] p-8 md:p-20 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2" />
             
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24 items-center">
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-24 items-center">
               <div>
                 <span className="text-primary text-[10px] uppercase tracking-[0.5em] font-bold mb-6 block">Direct Partnerships</span>
-                <h3 className="text-4xl md:text-5xl font-display font-bold text-white mb-8 leading-tight tracking-tight">
+                <h3 className="text-3xl md:text-5xl font-display font-bold text-white mb-8 leading-tight tracking-tight">
                   Better Prices Than OTAs. <br />Guaranteed.
                 </h3>
-              <p className="text-white/50 text-lg mb-10 font-light leading-relaxed">
+              <p className="text-white/50 text-base md:text-lg mb-10 font-light leading-relaxed">
                     Through our exclusive direct partnerships with premium hotels and local operators, we&apos;re able to offer rates that you won&apos;t find on MakeMyTrip, Agoda, or Booking.com.
                   </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
@@ -120,15 +120,15 @@ const WhyChooseUs = () => {
                   ))}
                 </div>
               </div>
-              <div className="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl group">
+              <div className="relative aspect-[4/3] rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl group">
                 <img 
                   src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&q=80&w=1000" 
                   alt="Luxury Resort" 
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-700 flex items-center justify-center">
-                  <div className="text-center p-10 bg-background/60 backdrop-blur-2xl rounded-3xl border border-white/10 transform transition-transform duration-700 group-hover:scale-105">
-                    <span className="text-primary text-5xl font-display font-bold block mb-2 tracking-tighter">SAVE UP TO 25%</span>
+                  <div className="text-center p-6 md:p-10 bg-background/60 backdrop-blur-2xl rounded-3xl border border-white/10 transform transition-transform duration-700 group-hover:scale-105">
+                    <span className="text-primary text-3xl md:text-5xl font-display font-bold block mb-2 tracking-tighter">SAVE UP TO 25%</span>
                     <span className="text-white/40 text-[10px] uppercase tracking-[0.3em] font-bold">Exclusive Premium Inventory</span>
                   </div>
                 </div>

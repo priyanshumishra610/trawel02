@@ -106,7 +106,7 @@ export function GuestReviews() {
     <section
       ref={sectionRef}
       id="reviews"
-      className="py-32 bg-background relative border-t border-white/5 overflow-visible"
+      className="py-20 md:py-32 bg-background relative border-t border-white/5 overflow-visible"
     >
       {/* Ambient premium light */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
@@ -115,7 +115,7 @@ export function GuestReviews() {
 
       <div className="max-w-[1800px] px-6 md:px-12 mx-auto relative z-10">
         {/* Header */}
-        <div className="reviews-header mb-20">
+        <div className="reviews-header mb-16 md:mb-20">
           <div className="flex items-center gap-3 mb-6">
             <div className="h-[1px] w-12 bg-primary" />
             <span className="text-[10px] uppercase tracking-[0.4em] text-primary font-bold">
@@ -131,7 +131,7 @@ export function GuestReviews() {
               </span>
             </h2>
 
-            <p className="text-lg text-white/40 font-light max-w-md leading-relaxed">
+            <p className="text-base md:text-lg text-white/40 font-light max-w-md leading-relaxed">
               We take pride in crafting moments that linger in memory. Here’s
               how our travelers describe their Trawel.in experience.
             </p>

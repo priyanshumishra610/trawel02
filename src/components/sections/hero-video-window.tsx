@@ -40,7 +40,7 @@ const HeroVideoWindow = () => {
           </motion.div>
 
       {/* Content */}
-      <div className="container relative z-20 flex-1 md:h-full flex flex-col justify-center pt-32 pb-12 md:pt-20 md:pb-0">
+      <div className="container relative z-20 flex-1 md:h-full flex flex-col justify-center pt-32 pb-16 md:pt-20 md:pb-0">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -58,7 +58,7 @@ const HeroVideoWindow = () => {
             </span>
           </div>
 
-            <h1 className="text-white mb-6 md:mb-8 tracking-tight font-bold text-4xl md:text-7xl">
+            <h1 className="text-white mb-6 md:mb-8 tracking-tight font-bold text-4xl md:text-7xl lg:text-8xl">
               {BRAND_CONFIG.tagline.split(' ').map((word, i) => (
                 <span key={i} className={i === 1 ? "text-primary italic font-serif" : ""}>
                   {word}{" "}
@@ -71,11 +71,11 @@ const HeroVideoWindow = () => {
             </p>
 
           <div className="flex flex-col sm:flex-row gap-4 md:gap-5">
-            <button className="btn btn-primary group tracking-[0.25em] text-[10px] py-4 px-10 w-full sm:w-auto">
+            <button className="btn btn-primary group tracking-[0.25em] text-[10px] py-5 px-10 w-full sm:w-auto min-h-[56px] flex items-center justify-center">
               <span>Get Free Travel Consultation</span>
               <ArrowRight className="inline-block ml-2 group-hover:translate-x-1 transition-transform" size={18} />
             </button>
-            <button className="btn btn-secondary flex items-center justify-center gap-3 group tracking-[0.25em] text-[10px] py-4 px-10 w-full sm:w-auto">
+            <button className="btn btn-secondary flex items-center justify-center gap-3 group tracking-[0.25em] text-[10px] py-5 px-10 w-full sm:w-auto min-h-[56px]">
               <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-all">
                 <Play size={14} fill="currentColor" />
               </div>
@@ -90,10 +90,10 @@ const HeroVideoWindow = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="relative md:absolute md:bottom-0 md:left-0 w-full z-30 px-4 md:px-0 pb-10 md:pb-0"
+          className="relative md:absolute md:bottom-0 md:left-0 w-full z-30 px-6 md:px-0 pb-12 md:pb-0 mt-8 md:mt-0"
         >
           <div className="container px-0 md:px-[inherit]">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 py-8 md:py-10 border border-white/10 md:border-0 md:border-t border-white/10 backdrop-blur-xl bg-white/5 md:bg-black/30 rounded-2xl md:rounded-none md:rounded-t-[3rem] px-6 md:px-10 shadow-2xl">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-8 py-10 md:py-12 border border-white/10 md:border-0 md:border-t border-white/10 backdrop-blur-3xl bg-white/5 md:bg-black/30 rounded-3xl md:rounded-none md:rounded-t-[3rem] px-8 md:px-12 shadow-2xl">
             {BRAND_CONFIG.stats.map((stat, i) => (
               <div key={i} className="flex flex-col items-center md:items-start text-center md:text-left">
                 <span className="text-xl md:text-3xl font-display font-bold text-primary tracking-tight">

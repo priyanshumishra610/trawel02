@@ -103,49 +103,71 @@ const Navigation = () => {
       </div>
 
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed inset-0 bg-background z-40 flex flex-col pt-32 px-8"
-          >
-            <div className="flex flex-col gap-8">
-              {navLinks.map((link) => (
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-background/98 backdrop-blur-3xl z-40 flex flex-col pt-32 px-10"
+            >
+              {/* Decorative light */}
+              <div className="absolute top-0 right-0 w-2/3 h-1/2 bg-primary/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+              
+              <div className="flex flex-col gap-8 relative z-10">
+                {navLinks.map((link, i) => (
+                  <motion.div
+                    key={link.name}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 + i * 0.1 }}
+                  >
+                    <Link 
+                      href={link.href}
+                      className="font-display text-5xl text-white hover:text-primary transition-colors tracking-tighter"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {link.name}
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+              
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                className="mt-auto pb-16 flex flex-col gap-8 relative z-10"
+              >
+                <div className="h-px w-full bg-white/5" />
+                
+                <div className="flex flex-col gap-4">
+                  <a href={`tel:${BRAND_CONFIG.contact.phone}`} className="flex items-center gap-4 text-lg text-white/60 hover:text-primary transition-colors tracking-wide">
+                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
+                      <Phone size={18} className="text-primary" />
+                    </div>
+                    <span>{BRAND_CONFIG.contact.phone}</span>
+                  </a>
+                  <a href={`mailto:${BRAND_CONFIG.contact.email}`} className="flex items-center gap-4 text-lg text-white/60 hover:text-primary transition-colors tracking-wide">
+                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
+                      <Mail size={18} className="text-primary" />
+                    </div>
+                    <span>{BRAND_CONFIG.contact.email}</span>
+                  </a>
+                </div>
+
                 <Link 
-                  key={link.name} 
-                  href={link.href}
-                  className="font-display text-4xl text-white hover:text-primary transition-colors"
+                  href="#contact" 
+                  className="btn btn-primary text-center py-5 text-xs uppercase tracking-[0.4em] font-bold shadow-2xl shadow-primary/20"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  {link.name}
+                  Book Your Elite Escape
                 </Link>
-              ))}
-            </div>
-            
-            <div className="mt-auto pb-12 flex flex-col gap-6">
-              <a href={`tel:${BRAND_CONFIG.contact.phone}`} className="flex items-center gap-4 text-xl text-white/80">
-                <Phone className="text-primary" />
-                <span>{BRAND_CONFIG.contact.phone}</span>
-              </a>
-              <a href={`mailto:${BRAND_CONFIG.contact.email}`} className="flex items-center gap-4 text-xl text-white/80">
-                <Mail className="text-primary" />
-                <span>{BRAND_CONFIG.contact.email}</span>
-              </a>
-              <Link 
-                href="#contact" 
-                className="btn btn-primary text-center py-4 text-lg"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Book Your Escape
-              </Link>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
     </nav>
   );
 };
