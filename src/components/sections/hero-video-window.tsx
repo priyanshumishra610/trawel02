@@ -19,10 +19,11 @@ const HeroVideoWindow = () => {
     <section 
       ref={containerRef}
       className="relative min-h-screen md:h-screen w-full overflow-hidden bg-black flex flex-col md:block"
+      style={{ contain: "paint layout" }}
     >
         {/* Background Video/Image */}
             <motion.div 
-              style={{ scale, y, willChange: "transform, scale" }}
+              style={{ scale, y, willChange: "transform, scale", transform: "translateZ(0)" }}
               className="absolute inset-0 z-[1]"
             >
             {/* Dark Overlay Gradient (40-55% for readability) */}

@@ -108,18 +108,20 @@ export function LuxuryParticles() {
       animationId = requestAnimationFrame(animate);
     };
 
+    const handleResize = () => {
+      resize();
+      init();
+    };
+
     resize();
     init();
     animate();
 
-    window.addEventListener("resize", () => {
-      resize();
-      init();
-    });
+    window.addEventListener("resize", handleResize, { passive: true });
 
     return () => {
       cancelAnimationFrame(animationId);
-      window.removeEventListener("resize", resize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -127,7 +129,7 @@ export function LuxuryParticles() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-[5] opacity-60"
-      style={{ mixBlendMode: "screen" }}
+      style={{ mixBlendMode: "screen", willChange: "transform" }}
     />
   );
 }

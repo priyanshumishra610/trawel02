@@ -91,10 +91,11 @@ export function CinematicStorytelling() {
               ref={(el) => {
                 if (el) panelsRef.current[i] = el;
               }}
-              className="relative h-auto min-h-[600px] py-24 md:py-0 md:h-screen w-full overflow-hidden flex items-center justify-center"
-              style={{ contain: "paint" }}
-            >
-              <div className="panel-image absolute inset-0 w-full h-full" style={{ willChange: "transform" }}>
+                className="relative h-auto min-h-[600px] py-24 md:py-0 md:h-screen w-full overflow-hidden flex items-center justify-center"
+                style={{ contain: "paint layout" }}
+              >
+                <div className="panel-image absolute inset-0 w-full h-full" style={{ willChange: "transform", transform: "translateZ(0)" }}>
+
                 <img
                   src={panel.image}
                   alt={panel.headline}

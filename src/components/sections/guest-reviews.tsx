@@ -107,6 +107,7 @@ export function GuestReviews() {
       ref={sectionRef}
       id="reviews"
       className="py-20 md:py-32 bg-background relative border-t border-white/5 overflow-visible"
+      style={{ contain: "paint layout" }}
     >
       {/* Ambient premium light */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/20 to-transparent" />

@@ -49,9 +49,10 @@ export function DestinationsShowcase() {
     ));
   };
 
-    return (
-      <section ref={sectionRef} id="destinations" className="py-20 md:py-32 bg-background relative overflow-hidden" style={{ contain: "paint" }}>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[200px] pointer-events-none" />
+      return (
+        <section ref={sectionRef} id="destinations" className="py-20 md:py-32 bg-background relative overflow-hidden" style={{ contain: "paint layout" }}>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[200px] pointer-events-none" />
+
         
         <div className="container relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-24 gap-8 md:gap-12">

@@ -75,36 +75,37 @@ const CuratedVoyageSlider = () => {
           </div>
         </div>
 
-        <div className="relative max-w-7xl mx-auto" style={{ contain: "paint" }}>
-          <div className="relative aspect-[16/9] md:aspect-[21/8] rounded-[3rem] overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.5)] border border-white/5 group">
-            <AnimatePresence initial={false} custom={direction} mode="popLayout">
-              <motion.div
-                key={currentIndex}
-                custom={direction}
-                variants={variants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{
-                  x: { type: "spring", stiffness: 200, damping: 30 },
-                  opacity: { duration: 0.8 },
-                  scale: { duration: 1.2 }
-                }}
-                className="absolute inset-0"
-                style={{ willChange: "transform, opacity" }}
-              >
-                <Image
-                  src={currentDestination.image}
-                  alt={currentDestination.title}
-                  fill
-                  className="object-cover transition-transform duration-[4000ms] ease-out scale-105 group-hover:scale-110"
-                  style={{ willChange: "transform" }}
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-90" />
-                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-1000" />
-              </motion.div>
-            </AnimatePresence>
+          <div className="relative max-w-7xl mx-auto" style={{ contain: "paint layout" }}>
+            <div className="relative aspect-[16/9] md:aspect-[21/8] rounded-[3rem] overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.5)] border border-white/5 group">
+              <AnimatePresence initial={false} custom={direction} mode="popLayout">
+                <motion.div
+                  key={currentIndex}
+                  custom={direction}
+                  variants={variants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{
+                    x: { type: "spring", stiffness: 200, damping: 30 },
+                    opacity: { duration: 0.8 },
+                    scale: { duration: 1.2 }
+                  }}
+                  className="absolute inset-0"
+                  style={{ willChange: "transform, opacity", transform: "translateZ(0)" }}
+                >
+                  <Image
+                    src={currentDestination.image}
+                    alt={currentDestination.title}
+                    fill
+                    className="object-cover transition-transform duration-[4000ms] ease-out scale-105 group-hover:scale-110"
+                    style={{ willChange: "transform", transform: "translateZ(0)" }}
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-90" />
+                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-1000" />
+                </motion.div>
+              </AnimatePresence>
+
 
             {/* Navigation Controls */}
             <div className="absolute bottom-12 right-12 flex gap-6 z-20">

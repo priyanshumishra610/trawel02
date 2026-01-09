@@ -54,8 +54,9 @@ export function DestinationHoverCard({
       className="group relative aspect-[4/5] rounded-[2.5rem] overflow-hidden cursor-pointer border border-white/5"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      style={{ transform: "translateZ(0)" }}
     >
-        <div className="absolute inset-0 w-full h-full" style={{ willChange: "transform, opacity" }}>
+        <div className="absolute inset-0 w-full h-full" style={{ willChange: "transform, opacity", transform: "translateZ(0)" }}>
           <Image
             src={image}
             alt={title}
