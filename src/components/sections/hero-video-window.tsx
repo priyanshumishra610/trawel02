@@ -18,7 +18,7 @@ const HeroVideoWindow = () => {
   return (
     <section 
       ref={containerRef}
-      className="relative h-screen w-full overflow-hidden bg-black"
+      className="relative min-h-screen md:h-screen w-full overflow-hidden bg-black flex flex-col md:block"
     >
         {/* Background Video/Image */}
           <motion.div 
@@ -26,7 +26,7 @@ const HeroVideoWindow = () => {
             className="absolute inset-0 z-[1]"
           >
             {/* Dark Overlay Gradient (40-55% for readability) */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/60 z-[2]" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80 z-[2]" />
                 <video 
                   autoPlay 
                   muted 
@@ -40,25 +40,25 @@ const HeroVideoWindow = () => {
           </motion.div>
 
       {/* Content */}
-      <div className="container relative z-20 h-full flex flex-col justify-center pt-20">
+      <div className="container relative z-20 flex-1 md:h-full flex flex-col justify-center pt-32 pb-12 md:pt-20 md:pb-0">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="max-w-4xl"
         >
-          <div className="flex items-center gap-2 mb-6">
+          <div className="flex items-center gap-2 mb-6 md:mb-8">
             <div className="flex text-secondary">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} size={14} fill="currentColor" />
               ))}
             </div>
-            <span className="text-white/80 text-xs uppercase tracking-[0.2em] font-medium">
+            <span className="text-white/80 text-[10px] md:text-xs uppercase tracking-[0.2em] font-medium">
               Trusted by {BRAND_CONFIG.stats[2].value} Travelers
             </span>
           </div>
 
-            <h1 className="text-white mb-8 tracking-tight font-bold">
+            <h1 className="text-white mb-6 md:mb-8 tracking-tight font-bold text-4xl md:text-7xl">
               {BRAND_CONFIG.tagline.split(' ').map((word, i) => (
                 <span key={i} className={i === 1 ? "text-primary italic font-serif" : ""}>
                   {word}{" "}
@@ -66,16 +66,16 @@ const HeroVideoWindow = () => {
               ))}
             </h1>
 
-            <p className="text-lg md:text-xl text-white/80 mb-12 max-w-2xl leading-relaxed tracking-wide font-light">
+            <p className="text-base md:text-xl text-white/80 mb-10 md:mb-12 max-w-2xl leading-relaxed tracking-wide font-light">
               {BRAND_CONFIG.description}
             </p>
 
-          <div className="flex flex-col sm:flex-row gap-5">
-            <button className="btn btn-primary group tracking-[0.25em] text-[10px] py-4 px-10">
+          <div className="flex flex-col sm:flex-row gap-4 md:gap-5">
+            <button className="btn btn-primary group tracking-[0.25em] text-[10px] py-4 px-10 w-full sm:w-auto">
               <span>Get Free Travel Consultation</span>
               <ArrowRight className="inline-block ml-2 group-hover:translate-x-1 transition-transform" size={18} />
             </button>
-            <button className="btn btn-secondary flex items-center justify-center gap-3 group tracking-[0.25em] text-[10px] py-4 px-10">
+            <button className="btn btn-secondary flex items-center justify-center gap-3 group tracking-[0.25em] text-[10px] py-4 px-10 w-full sm:w-auto">
               <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-all">
                 <Play size={14} fill="currentColor" />
               </div>
@@ -90,16 +90,16 @@ const HeroVideoWindow = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="absolute bottom-0 left-0 w-full z-30"
+          className="relative md:absolute md:bottom-0 md:left-0 w-full z-30 px-4 md:px-0 pb-10 md:pb-0"
         >
-          <div className="container">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-10 border-t border-white/10 backdrop-blur-md bg-black/30 rounded-t-[3rem] px-10 shadow-2xl">
+          <div className="container px-0 md:px-[inherit]">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 py-8 md:py-10 border border-white/10 md:border-0 md:border-t border-white/10 backdrop-blur-xl bg-white/5 md:bg-black/30 rounded-2xl md:rounded-none md:rounded-t-[3rem] px-6 md:px-10 shadow-2xl">
             {BRAND_CONFIG.stats.map((stat, i) => (
-              <div key={i} className="flex flex-col">
-                <span className="text-2xl md:text-3xl font-display font-bold text-primary tracking-tight">
+              <div key={i} className="flex flex-col items-center md:items-start text-center md:text-left">
+                <span className="text-xl md:text-3xl font-display font-bold text-primary tracking-tight">
                   {stat.value}
                 </span>
-                <span className="text-[10px] uppercase tracking-[0.3em] text-white/40 font-semibold">
+                <span className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-white/50 md:text-white/40 font-semibold mt-1">
                   {stat.label}
                 </span>
               </div>
