@@ -18,7 +18,7 @@ const HeroVideoWindow = () => {
   return (
     <section 
       ref={containerRef}
-      className="relative min-h-screen md:h-screen w-full overflow-hidden bg-black flex flex-col md:block"
+      className="relative min-h-screen w-full overflow-hidden bg-black flex flex-col md:pb-48"
       style={{ contain: "paint layout" }}
     >
         {/* Background Video/Image */}
@@ -41,7 +41,7 @@ const HeroVideoWindow = () => {
           </motion.div>
 
       {/* Content */}
-      <div className="container relative z-20 flex-1 md:h-full flex flex-col justify-center pt-32 pb-16 md:pt-20 md:pb-0">
+      <div className="container relative z-20 flex-1 flex flex-col justify-center pt-32 pb-16 md:pt-20 md:pb-0">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
